@@ -1,0 +1,12 @@
+D:\sm\SocialNetwork\BLL.Interfaces\bin\Debug\netcoreapp3.1\BLL.Interfaces.deps.json
+D:\sm\SocialNetwork\BLL.Interfaces\bin\Debug\netcoreapp3.1\BLL.Interfaces.dll
+D:\sm\SocialNetwork\BLL.Interfaces\obj\Debug\netcoreapp3.1\BLL.Interfaces.csprojAssemblyReference.cache
+D:\sm\SocialNetwork\BLL.Interfaces\obj\Debug\netcoreapp3.1\BLL.Interfaces.AssemblyInfoInputs.cache
+D:\sm\SocialNetwork\BLL.Interfaces\obj\Debug\netcoreapp3.1\BLL.Interfaces.AssemblyInfo.cs
+D:\sm\SocialNetwork\BLL.Interfaces\bin\Debug\netcoreapp3.1\BLL.Interfaces.pdb
+D:\sm\SocialNetwork\BLL.Interfaces\obj\Debug\netcoreapp3.1\BLL.Interfaces.dll
+D:\sm\SocialNetwork\BLL.Interfaces\obj\Debug\netcoreapp3.1\BLL.Interfaces.pdb
+D:\sm\SocialNetwork\BLL.Interfaces\bin\Debug\netcoreapp3.1\BLL.Interfaces.runtimeconfig.json
+D:\sm\SocialNetwork\BLL.Interfaces\bin\Debug\netcoreapp3.1\BLL.Interfaces.runtimeconfig.dev.json
+D:\sm\SocialNetwork\BLL.Interfaces\obj\Debug\netcoreapp3.1\BLL.Interfaces.csproj.CoreCompileInputs.cache
+D:\sm\SocialNetwork\BLL.Interfaces\obj\Debug\netcoreapp3.1\BLL.Interfaces.genruntimeconfig.cache

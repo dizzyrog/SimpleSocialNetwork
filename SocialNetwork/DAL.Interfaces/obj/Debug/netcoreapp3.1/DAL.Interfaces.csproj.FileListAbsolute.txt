@@ -1,0 +1,12 @@
+D:\sm\SocialNetwork\DAL.Interfaces\bin\Debug\netcoreapp3.1\DAL.Interfaces.deps.json
+D:\sm\SocialNetwork\DAL.Interfaces\bin\Debug\netcoreapp3.1\DAL.Interfaces.dll
+D:\sm\SocialNetwork\DAL.Interfaces\obj\Debug\netcoreapp3.1\DAL.Interfaces.csprojAssemblyReference.cache
+D:\sm\SocialNetwork\DAL.Interfaces\obj\Debug\netcoreapp3.1\DAL.Interfaces.AssemblyInfoInputs.cache
+D:\sm\SocialNetwork\DAL.Interfaces\obj\Debug\netcoreapp3.1\DAL.Interfaces.AssemblyInfo.cs
+D:\sm\SocialNetwork\DAL.Interfaces\bin\Debug\netcoreapp3.1\DAL.Interfaces.pdb
+D:\sm\SocialNetwork\DAL.Interfaces\obj\Debug\netcoreapp3.1\DAL.Interfaces.dll
+D:\sm\SocialNetwork\DAL.Interfaces\obj\Debug\netcoreapp3.1\DAL.Interfaces.pdb
+D:\sm\SocialNetwork\DAL.Interfaces\bin\Debug\netcoreapp3.1\DAL.Interfaces.runtimeconfig.json
+D:\sm\SocialNetwork\DAL.Interfaces\bin\Debug\netcoreapp3.1\DAL.Interfaces.runtimeconfig.dev.json
+D:\sm\SocialNetwork\DAL.Interfaces\obj\Debug\netcoreapp3.1\DAL.Interfaces.csproj.CoreCompileInputs.cache
+D:\sm\SocialNetwork\DAL.Interfaces\obj\Debug\netcoreapp3.1\DAL.Interfaces.genruntimeconfig.cache

@@ -1,0 +1,12 @@
+D:\sm\SocialNetwork\DAL.Domain\bin\Debug\netcoreapp3.1\DAL.Domain.deps.json
+D:\sm\SocialNetwork\DAL.Domain\bin\Debug\netcoreapp3.1\DAL.Domain.dll
+D:\sm\SocialNetwork\DAL.Domain\obj\Debug\netcoreapp3.1\DAL.Domain.csprojAssemblyReference.cache
+D:\sm\SocialNetwork\DAL.Domain\obj\Debug\netcoreapp3.1\DAL.Domain.AssemblyInfoInputs.cache
+D:\sm\SocialNetwork\DAL.Domain\obj\Debug\netcoreapp3.1\DAL.Domain.AssemblyInfo.cs
+D:\sm\SocialNetwork\DAL.Domain\bin\Debug\netcoreapp3.1\DAL.Domain.pdb
+D:\sm\SocialNetwork\DAL.Domain\obj\Debug\netcoreapp3.1\DAL.Domain.dll
+D:\sm\SocialNetwork\DAL.Domain\obj\Debug\netcoreapp3.1\DAL.Domain.pdb
+D:\sm\SocialNetwork\DAL.Domain\bin\Debug\netcoreapp3.1\DAL.Domain.runtimeconfig.json
+D:\sm\SocialNetwork\DAL.Domain\bin\Debug\netcoreapp3.1\DAL.Domain.runtimeconfig.dev.json
+D:\sm\SocialNetwork\DAL.Domain\obj\Debug\netcoreapp3.1\DAL.Domain.genruntimeconfig.cache
+D:\sm\SocialNetwork\DAL.Domain\obj\Debug\netcoreapp3.1\DAL.Domain.csproj.CoreCompileInputs.cache

@@ -1,0 +1,50 @@
+<form
+  [formGroup]="form"
+  (ngSubmit)="onSubmit(form.value)">
+  <ul>
+    <li>
+        <a>
+            <label for="firstName">Name</label>
+          <div>
+            <input type="text" name="firstName" id="firstName" formControlName="firstName">    
+          </div>
+        </a>
+      <!-- <div *ngIf="form.get('name').hasError('pattern')" class="error">
+        Name has invalid characters
+      </div> -->
+    </li>
+    <li>
+        <label for="lastName">Last Name</label>
+        <input type="text" name="lastName" id="lastName" formControlName="lastName">
+        <!-- <div *ngIf="form.get('name').hasError('pattern')" class="error">
+          Name has invalid characters
+        </div> -->
+      </li>
+    <li>
+      <label for="age">Age</label>
+      <input type="text" name="age" id="age" formControlName="age">
+    </li>
+    <!-- <li>
+      <label for="year">Year</label>
+      <input type="text" name="year" id="year" maxlength="4" formControlName="year">
+      <div *ngIf="form.get('year').errors as yearErrors" class="error">
+        Must be between 
+        {{yearErrors.year.min}}
+        and 
+        {{yearErrors.year.max}}
+      </div>
+    </li>  -->
+  </ul>
+  <a [routerLink]="['/']">
+    <button type="submit" class="btn btn-primary" [disabled]="!form.valid">Save</button>
+  </a>
+</form>
+
+<!-- <select name="age" id="age" formControlName="age">
+    <option value="Action">rt</option>
+    <option value="Science Fiction">Science Fiction</option>
+    <option value="Comedy">Comedy</option>
+    <option value="Drama">Drama</option>
+    <option value="Horror">Horror</option>
+    <option value="Romance">Romance</option>
+  </select> -->
