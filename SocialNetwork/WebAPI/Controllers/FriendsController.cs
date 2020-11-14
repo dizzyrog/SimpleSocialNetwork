@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebAPI.Models;
 
@@ -19,8 +20,9 @@ namespace WebAPI.Controllers
         {
             return new string[] { "value1", "value2" };
         }
-
+        //TODO change route to friends/user/{userId}
         [HttpGet("{userId}")]
+        [Authorize(Roles = "Admin, User")]
         public ActionResult<FriendModel[]> GetFriendsById(int userId)
         {
             if (userId == 1)

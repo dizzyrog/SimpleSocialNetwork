@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebAPI.Models;
 
@@ -16,6 +17,7 @@ namespace WebAPI.Controllers
     {
         // GET: api/users
         [HttpGet]
+        [Authorize(Roles = "Admin, User")]
         public ActionResult<UserModel[]> GetUsers()
         {
             UserModel[] UserModels =
@@ -111,6 +113,7 @@ namespace WebAPI.Controllers
 
         // DELETE api/<UsersController>/5
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin")]
         public ActionResult DeleteUserById(int id)
         {
             return Ok();
