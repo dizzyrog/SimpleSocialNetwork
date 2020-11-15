@@ -17,6 +17,7 @@ using Microsoft.IdentityModel.Tokens;
 using DAL;
 using AspNet.Security.OpenIdConnect.Primitives;
 using WebAPI.Models;
+using DAL.EF.Contexts;
 
 namespace WebAPI
 {
@@ -32,6 +33,11 @@ namespace WebAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseSqlServer(
+                    Configuration.GetConnectionString("DefaultConnection")));
+
             services.AddDbContext<AuthenticationContext>(
             (options =>
         {
