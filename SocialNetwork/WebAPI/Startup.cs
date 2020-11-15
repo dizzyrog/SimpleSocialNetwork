@@ -18,6 +18,11 @@ using DAL;
 using AspNet.Security.OpenIdConnect.Primitives;
 using WebAPI.Models;
 using DAL.EF.Contexts;
+using AutoMapper;
+using BLL.Infrastructure.AutomapperProfiles;
+using DAL.Interfaces;
+using BLL.Interfaces;
+using BLL.Infrastructure.Services;
 
 namespace WebAPI
 {
@@ -104,6 +109,25 @@ namespace WebAPI
             );
 
             services.AddCors();
+            services.AddControllers();
+
+
+            var mappingConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new UserAutomapperProfile());
+                mc.AddProfile(new ChatAutomapperProfile());
+                mc.AddProfile(new FriendshipAutomapperProfile());
+                mc.AddProfile(new MessageAutomapperProfile());
+
+            });
+
+            IMapper mapper = mappingConfig.CreateMapper();
+            services.AddSingleton(mapper);
+
+
+            services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IUnitOfWork, UnitOfWork>();
+            services.AddTransient<DbContext, ApplicationDbContext>();
 
             var key = Encoding.UTF8.GetBytes(Configuration["ApplicationSettings:JWT_Secret"].ToString());
 

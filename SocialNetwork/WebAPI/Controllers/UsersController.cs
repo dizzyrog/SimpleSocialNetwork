@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
+using AutoMapper;
+using BLL.DTO;
+using BLL.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebAPI.Models;
@@ -12,95 +15,44 @@ using WebAPI.Models;
 namespace WebAPI.Controllers
 {
     [Route("api/users")]
+    //[Authorize(Roles = "Admin, User")]
     [ApiController]
     public class UsersController : ControllerBase
     {
+
+        private readonly IUserService _userService;
+        private readonly IMapper _mapper;
+        public UsersController(IUserService userService, IMapper mapper)
+        {
+            _userService = userService;
+            _mapper = mapper;
+        }
         // GET: api/users
         [HttpGet]
-        [Authorize(Roles = "Admin, User")]
-        public ActionResult<UserModel[]> GetUsers()
+        public async Task<ActionResult<IEnumerable<UserDTO>>> GetUsers()
         {
-            UserModel[] UserModels =
-               {    new UserModel()
-                    {
-                    Id = 4,
-                    Email = "del.marco@gmail.com",
-                    UserName = "jojo"
-                    },
-                    new UserModel()
-                    {
-                    Id = 5,
-                    Email = "luke.danes@gmail.com",
-                    UserName = "luke`s"
-                    },
-                    new UserModel()
-                    {
-                    Id = 1,
-                    Email = "ada.love@gmail.com",
-                    UserName = "ada.love"
-                    },
-                    new UserModel()
-                    {
-                    Id = 2,
-                    Email = "tim@gmail.com",
-                    UserName = "timmy"
-                    },
-                    new UserModel()
-                    {
-                    Id = 3,
-                    Email = "rory.gilmore@gmail.com",
-                    UserName = "rory"
-                    }
-               };
-            return Ok(UserModels);
+            var res = await _userService.GetUsersAsync();
+            if (res != null)
+            {
+                return Ok(res);
+            }
+            return BadRequest();
         }
     
 
         // GET api/<UsersController>/5
         [HttpGet("{userId}")]
-        public ActionResult<UserModel> GetUserById(int userId)
+        public async Task<ActionResult<UserDTO>> GetUserById(int userId)
         {
-            switch (userId)
+            var res = await _userService.GetUserByIdAsync(userId);
+
+            //TODO create a method for check
+            if (res != null)
             {
-                case 1:
-                    return Ok(new UserModel()
-                    {
-                        Id = 1,
-                        Email = "ada.love@gmail.com",
-                        UserName = "ada.love"
-                    });
-                case 2:
-                    return Ok(new UserModel()
-                    {
-                        Id = 2,
-                        Email = "tim@gmail.com",
-                        UserName = "timmy"
-                    });
-                case 3:
-                    return Ok(new UserModel()
-                    {
-                        Id = 3,
-                        Email = "rory.gilmore@gmail.com",
-                        UserName = "rory"
-                    });
-                case 4:
-                    return Ok(new UserModel()
-                    {
-                        Id = 4,
-                        Email = "del.marco@gmail.com",
-                        UserName = "jojo"
-                    });
-                case 5:
-                    return Ok(new UserModel()
-                    {
-                        Id = 5,
-                        Email = "luke.danes@gmail.com",
-                        UserName = "luke`s"
-                    });
-                default:
-                 return NotFound();
+                return Ok(res);
             }
-            
+            return BadRequest();
+
         }
 
 
@@ -118,5 +70,6 @@ namespace WebAPI.Controllers
         {
             return Ok();
         }
+
     }
 }

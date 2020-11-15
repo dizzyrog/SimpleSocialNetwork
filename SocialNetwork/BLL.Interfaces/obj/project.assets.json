@@ -1841,6 +1841,20 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
+      },
+      "BLL.DTO/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "Microsoft.AspNetCore.Identity": "2.2.0",
+          "Microsoft.EntityFrameworkCore.SqlServer": "3.1.10"
+        },
+        "compile": {
+          "bin/placeholder/BLL.DTO.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/BLL.DTO.dll": {}
+        }
       }
     }
   },
@@ -6433,10 +6447,16 @@
         "system.xml.xmlserializer.4.3.0.nupkg.sha512",
         "system.xml.xmlserializer.nuspec"
       ]
+    },
+    "BLL.DTO/1.0.0": {
+      "type": "project",
+      "path": "../BLL.DTO/BLL.DTO.csproj",
+      "msbuildProject": "../BLL.DTO/BLL.DTO.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
+      "BLL.DTO >= 1.0.0",
       "Microsoft.AspNetCore.Identity >= 2.2.0",
       "Microsoft.EntityFrameworkCore.SqlServer >= 3.1.10",
       "Microsoft.EntityFrameworkCore.Tools >= 3.1.5"
@@ -6471,7 +6491,11 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\sm\\SocialNetwork\\BLL.DTO\\BLL.DTO.csproj": {
+              "projectPath": "D:\\sm\\SocialNetwork\\BLL.DTO\\BLL.DTO.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

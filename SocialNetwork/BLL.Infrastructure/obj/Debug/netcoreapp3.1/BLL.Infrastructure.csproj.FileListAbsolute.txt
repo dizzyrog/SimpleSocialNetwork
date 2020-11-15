@@ -8,5 +8,14 @@ D:\sm\SocialNetwork\BLL.Infrastructure\obj\Debug\netcoreapp3.1\BLL.Infrastructur
 D:\sm\SocialNetwork\BLL.Infrastructure\obj\Debug\netcoreapp3.1\BLL.Infrastructure.pdb
 D:\sm\SocialNetwork\BLL.Infrastructure\bin\Debug\netcoreapp3.1\BLL.Infrastructure.runtimeconfig.json
 D:\sm\SocialNetwork\BLL.Infrastructure\bin\Debug\netcoreapp3.1\BLL.Infrastructure.runtimeconfig.dev.json
-D:\sm\SocialNetwork\BLL.Infrastructure\obj\Debug\netcoreapp3.1\BLL.Infrastructure.csproj.CoreCompileInputs.cache
 D:\sm\SocialNetwork\BLL.Infrastructure\obj\Debug\netcoreapp3.1\BLL.Infrastructure.genruntimeconfig.cache
+D:\sm\SocialNetwork\BLL.Infrastructure\bin\Debug\netcoreapp3.1\DAL.Domain.dll
+D:\sm\SocialNetwork\BLL.Infrastructure\bin\Debug\netcoreapp3.1\DAL.Interfaces.dll
+D:\sm\SocialNetwork\BLL.Infrastructure\bin\Debug\netcoreapp3.1\DAL.Interfaces.pdb
+D:\sm\SocialNetwork\BLL.Infrastructure\bin\Debug\netcoreapp3.1\DAL.Domain.pdb
+D:\sm\SocialNetwork\BLL.Infrastructure\obj\Debug\netcoreapp3.1\BLL.Infrastructure.csproj.CopyComplete
+D:\sm\SocialNetwork\BLL.Infrastructure\bin\Debug\netcoreapp3.1\BLL.DTO.dll
+D:\sm\SocialNetwork\BLL.Infrastructure\bin\Debug\netcoreapp3.1\BLL.Interfaces.dll
+D:\sm\SocialNetwork\BLL.Infrastructure\bin\Debug\netcoreapp3.1\BLL.DTO.pdb
+D:\sm\SocialNetwork\BLL.Infrastructure\bin\Debug\netcoreapp3.1\BLL.Interfaces.pdb
+D:\sm\SocialNetwork\BLL.Infrastructure\obj\Debug\netcoreapp3.1\BLL.Infrastructure.csproj.CoreCompileInputs.cache

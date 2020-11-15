@@ -13,7 +13,10 @@ export class UserService {
     getUserByIdObservable (id: number){
   return this.http.get<User>(this.baseUrl+'api/users/'+id);
     }
-  
+
+    getUsersObservable (){
+      return this.http.get<User[]>(this.baseUrl+'api/users');
+      }
   
 
   RegistrateUser(model:User){

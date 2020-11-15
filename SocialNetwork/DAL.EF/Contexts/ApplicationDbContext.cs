@@ -16,8 +16,8 @@ namespace DAL.EF.Contexts
           DbContextOptions<ApplicationDbContext> options,
           IOptions<OperationalStoreOptions> operationalStoreOptions) : base(options)
         {
-            Database.EnsureDeleted();
-            Database.EnsureCreated();
+            //Database.EnsureDeleted();
+            //Database.EnsureCreated();
         }
 
         public DbSet<User> Users { get; set; }

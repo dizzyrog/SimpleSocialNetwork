@@ -2,17 +2,29 @@
 
   <div class="Info">
     <br>
-    <div>{{user.userName | uppercase}}  {{user.lastName}}</div>
-    <div>Age: 18  {{user.age}}</div>
+    <div>{{user.firstName}}  {{user.lastName}}</div>
+    <div>Age: {{user.age}}</div>
+    <br>
+    <br>
+    <div>{{user.aboutMe}} </div>
     <br>
   </div>
-
   <div class="divider"></div>
 
   <div class="Info"> Contact information:
     <br>
     <div>Email: {{user.email}} </div>
-    <div>Phone: FIXME {{user.age}}</div>
+    <div>Phone: {{user.phoneNumber}}</div>
+    <br>
+  </div>
+  <div class="Info"> Location:
+    <br>
+    <div>{{user.city}}, {{user.country}} </div>
+    <br>
+  </div>
+  <div class="Info"> Education:
+    <br>
+    <div>University:  {{user.university}} </div>
     <br>
   </div>
 
