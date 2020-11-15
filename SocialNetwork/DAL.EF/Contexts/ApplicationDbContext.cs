@@ -35,10 +35,11 @@ namespace DAL.EF.Contexts
             modelBuilder.ApplyConfiguration(new ChatConfiguration());
             modelBuilder.ApplyConfiguration(new MessageConfiguration());
 
-            //UserSeeder.SeedDatabase(modelBuilder);
-            //ChatSeeder.SeedDatabase(modelBuilder);
-            //FriendshipSeeder.SeedDatabase(modelBuilder);
+            UserSeeder.SeedDatabase(modelBuilder);
+            ChatSeeder.SeedDatabase(modelBuilder);
+            FriendshipSeeder.SeedDatabase(modelBuilder);
             //MessageSeeder.SeedDatabase(modelBuilder);
+            
         }
     }
 }
