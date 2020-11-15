@@ -18,10 +18,11 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DAL.Domain\DAL.Domain.csproj" />
+    <ProjectReference Include="..\DAL.Interfaces\DAL.Interfaces.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Repositories\" />
+    <Folder Include="Exceptions\" />
   </ItemGroup>
 
 </Project>

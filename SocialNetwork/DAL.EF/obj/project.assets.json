@@ -1890,6 +1890,24 @@
         "frameworkReferences": [
           "Microsoft.AspNetCore.App"
         ]
+      },
+      "DAL.Interfaces/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "DAL.Domain": "1.0.0",
+          "Microsoft.AspNetCore.Identity": "2.2.0",
+          "Microsoft.EntityFrameworkCore.SqlServer": "3.1.10"
+        },
+        "compile": {
+          "bin/placeholder/DAL.Interfaces.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DAL.Interfaces.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       }
     }
   },
@@ -6472,11 +6490,17 @@
       "type": "project",
       "path": "../DAL.Domain/DAL.Domain.csproj",
       "msbuildProject": "../DAL.Domain/DAL.Domain.csproj"
+    },
+    "DAL.Interfaces/1.0.0": {
+      "type": "project",
+      "path": "../DAL.Interfaces/DAL.Interfaces.csproj",
+      "msbuildProject": "../DAL.Interfaces/DAL.Interfaces.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
       "DAL.Domain >= 1.0.0",
+      "DAL.Interfaces >= 1.0.0",
       "IdentityServer4.EntityFramework.Storage >= 4.1.1",
       "Microsoft.AspNetCore.Identity >= 2.2.0",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 3.1.10",
@@ -6517,6 +6541,9 @@
           "projectReferences": {
             "D:\\sm\\SocialNetwork\\DAL.Domain\\DAL.Domain.csproj": {
               "projectPath": "D:\\sm\\SocialNetwork\\DAL.Domain\\DAL.Domain.csproj"
+            },
+            "D:\\sm\\SocialNetwork\\DAL.Interfaces\\DAL.Interfaces.csproj": {
+              "projectPath": "D:\\sm\\SocialNetwork\\DAL.Interfaces\\DAL.Interfaces.csproj"
             }
           }
         }

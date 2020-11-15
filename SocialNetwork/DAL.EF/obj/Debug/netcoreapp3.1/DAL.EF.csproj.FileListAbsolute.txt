@@ -13,3 +13,5 @@ D:\sm\SocialNetwork\DAL.EF\bin\Debug\netcoreapp3.1\DAL.EF.runtimeconfig.json
 D:\sm\SocialNetwork\DAL.EF\bin\Debug\netcoreapp3.1\DAL.EF.runtimeconfig.dev.json
 D:\sm\SocialNetwork\DAL.EF\obj\Debug\netcoreapp3.1\DAL.EF.genruntimeconfig.cache
 D:\sm\SocialNetwork\DAL.EF\obj\Debug\netcoreapp3.1\DAL.EF.csproj.CoreCompileInputs.cache
+D:\sm\SocialNetwork\DAL.EF\bin\Debug\netcoreapp3.1\DAL.Interfaces.dll
+D:\sm\SocialNetwork\DAL.EF\bin\Debug\netcoreapp3.1\DAL.Interfaces.pdb

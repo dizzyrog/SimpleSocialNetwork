@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Repositories\" />
+    <ProjectReference Include="..\DAL.Domain\DAL.Domain.csproj" />
   </ItemGroup>
 
 </Project>

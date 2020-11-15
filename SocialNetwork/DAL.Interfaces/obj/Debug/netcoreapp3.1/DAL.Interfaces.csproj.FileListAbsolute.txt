@@ -10,3 +10,6 @@ D:\sm\SocialNetwork\DAL.Interfaces\bin\Debug\netcoreapp3.1\DAL.Interfaces.runtim
 D:\sm\SocialNetwork\DAL.Interfaces\bin\Debug\netcoreapp3.1\DAL.Interfaces.runtimeconfig.dev.json
 D:\sm\SocialNetwork\DAL.Interfaces\obj\Debug\netcoreapp3.1\DAL.Interfaces.csproj.CoreCompileInputs.cache
 D:\sm\SocialNetwork\DAL.Interfaces\obj\Debug\netcoreapp3.1\DAL.Interfaces.genruntimeconfig.cache
+D:\sm\SocialNetwork\DAL.Interfaces\bin\Debug\netcoreapp3.1\DAL.Domain.dll
+D:\sm\SocialNetwork\DAL.Interfaces\bin\Debug\netcoreapp3.1\DAL.Domain.pdb
+D:\sm\SocialNetwork\DAL.Interfaces\obj\Debug\netcoreapp3.1\DAL.Interfaces.csproj.CopyComplete

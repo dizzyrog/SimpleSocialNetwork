@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "0nHAfkuQFQ90dWJMZhv1lX3V0c8qrl2K0Sb+CXWekcTuybcrYAcVr4+guamEfoD5//WtiRB++BbX4Mbe98c3Iw==",
+  "dgSpecHash": "sEPpGmsH/9VSFgayrjitgIu/89IawevqTQhlaL3603MDiJL2VivqYq2U1BXSs6mf7NecU515dewBcRNpnQqbPw==",
   "success": true,
   "projectFilePath": "D:\\sm\\SocialNetwork\\DAL.Interfaces\\DAL.Interfaces.csproj",
   "expectedPackageFiles": [
@@ -8,6 +8,7 @@
     "C:\\Users\\dizzyrog\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\dizzyrog\\.nuget\\packages\\microsoft.aspnetcore.authentication.cookies\\2.2.0\\microsoft.aspnetcore.authentication.cookies.2.2.0.nupkg.sha512",
     "C:\\Users\\dizzyrog\\.nuget\\packages\\microsoft.aspnetcore.authentication.core\\2.2.0\\microsoft.aspnetcore.authentication.core.2.2.0.nupkg.sha512",
+    "C:\\Users\\dizzyrog\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\3.1.10\\microsoft.aspnetcore.authentication.jwtbearer.3.1.10.nupkg.sha512",
     "C:\\Users\\dizzyrog\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\2.2.0\\microsoft.aspnetcore.cryptography.internal.2.2.0.nupkg.sha512",
     "C:\\Users\\dizzyrog\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\2.2.0\\microsoft.aspnetcore.cryptography.keyderivation.2.2.0.nupkg.sha512",
     "C:\\Users\\dizzyrog\\.nuget\\packages\\microsoft.aspnetcore.dataprotection\\2.2.0\\microsoft.aspnetcore.dataprotection.2.2.0.nupkg.sha512",
