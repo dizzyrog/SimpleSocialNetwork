@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
+import { User } from 'src/app/user/User';
+import { UserService } from 'src/app/user/user.service';
 
 @Component({
   selector: 'app-edit-profile',
@@ -9,7 +12,9 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 export class EditProfileComponent implements OnInit {
 
   form:FormGroup;
-  constructor() { }
+  user: User;
+
+  constructor(private router: Router, private service: UserService) { }
 
   ngOnInit() {
     this.form = new FormGroup({
@@ -24,10 +29,18 @@ export class EditProfileComponent implements OnInit {
     )
   }
   onSubmit(user) {
-    // this.mediaItemService.add(mediaItem)
-    //   .subscribe(() => {
-    //     this.router.navigate(['/', mediaItem.medium]);
-      //});
-      console.log("form submitted");
+    this.service.updateUser(user).subscribe(res => {this.user = res});
+    console.log("form submitted");
+    // this.service.getUserProfile().subscribe(
+    //   res => {
+    //     this.userDetails = res;
+    //   },
+    //   err => {
+    //     console.log(err);
+      //},
+    //);
+      
   }
 }
+
+  

@@ -29,7 +29,7 @@ namespace WebAPI.Controllers
         }
         // GET: api/users
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<UserDTO>>> GetUsers()
+        public async Task<ActionResult<IEnumerable<UserDTO>>> GetUsersAsync()
         {
             var res = await _userService.GetUsersAsync();
             if (res != null)
@@ -42,7 +42,7 @@ namespace WebAPI.Controllers
 
         // GET api/<UsersController>/5
         [HttpGet("{userId}")]
-        public async Task<ActionResult<UserDTO>> GetUserById(int userId)
+        public async Task<ActionResult<UserDTO>> GetUserByIdAsync(int userId)
         {
             var res = await _userService.GetUserByIdAsync(userId);
 
@@ -57,10 +57,12 @@ namespace WebAPI.Controllers
 
 
         // PUT api/<UsersController>/5
-        [HttpPut("{id}")]
-        public void PutUserById(int id, [FromBody] string value)
+        [HttpPut("{userId}")]
+        public async Task<ActionResult> PutUserByIdAsync(int userId, [FromBody] UserModel userModel)
         {
-            //return Ok("");
+            var user = _mapper.Map<UserModel, UserDTO>(userModel);
+            await _userService.UpdateUserAsync(user);
+            return Ok();
         }
 
         // DELETE api/<UsersController>/5

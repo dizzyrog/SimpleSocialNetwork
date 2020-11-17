@@ -4,6 +4,7 @@ using DAL.Domain;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using WebAPI.Models;
 
 namespace BLL.Infrastructure.AutomapperProfiles
 {
@@ -11,6 +12,8 @@ namespace BLL.Infrastructure.AutomapperProfiles
     {
         public UserAutomapperProfile()
         {
+            CreateMap<UserDTO, UserModel>();
+            CreateMap<UserModel, UserDTO>();
             CreateMap<UserDTO, User>();
             CreateMap<User, UserDTO>();
         }

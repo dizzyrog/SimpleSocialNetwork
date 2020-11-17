@@ -10,5 +10,7 @@ namespace BLL.Interfaces
         public Task<UserDTO> GetUserByIdAsync(int id);
         public Task AddUser(UserDTO user);
         public Task<IEnumerable<UserDTO>> GetUsersAsync();
+        public Task UpdateUserAsync(UserDTO userDTO);
+        public void DeleteUser(UserDTO user);
     }
 }

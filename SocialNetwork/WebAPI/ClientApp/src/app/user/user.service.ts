@@ -1,6 +1,7 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User} from './User';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -8,51 +9,80 @@ import { User} from './User';
 
 export class UserService {
 
-  constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string) { }
+  constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string, private fb: FormBuilder) { }
+
+  formModel = this.fb.group({
+    UserName: ['', Validators.required],
+    Email: ['', Validators.email],
+    FullName: [''],
+    Passwords: this.fb.group({
+      Password: ['', [Validators.required, Validators.minLength(4)]],
+      ConfirmPassword: ['', Validators.required]
+    }, { validator: this.comparePasswords })
+  });
 
     getUserByIdObservable (id: number){
-  return this.http.get<User>(this.baseUrl+'api/users/'+id);
+      return this.http.get<User>(this.baseUrl+'api/users/'+id);
     }
 
     getUsersObservable (){
       return this.http.get<User[]>(this.baseUrl+'api/users');
-      }
+    }
   
+    updateUser(user: User) {
+      const id =3;
+      return this.http.put<User>(this.baseUrl+'api/users/'+id, user);
+        //.pipe(
+        //  catchError(this.handleError('updateUser', user))
+        //);
+    }
+   
+    getUserProfile() {
+      return this.http.get(this.baseUrl + '/UserProfile');
+    }
+    register(){
+      var body = {
+        UserName: this.formModel.value.UserName,
+        Email: this.formModel.value.Email,
+        FullName: this.formModel.value.FullName,
+        Password: this.formModel.value.Passwords.Password,
+        Role: "user"
+      };
+      return this.http.post(this.baseUrl + 'api/account/register', body);
+    }
 
-  RegistrateUser(model:User){
-    return this.http.post(this.baseUrl + 'api/user/register', model);
+    login(model: User){
+      return this.http.post(this.baseUrl + 'api/account/login', model);
+    }
+
+    roleMatch(allowedRoles): boolean {
+      var isMatch = false;
+      var payLoad = JSON.parse(window.atob(localStorage.getItem('token').split('.')[1]));
+      var userRole = payLoad.role;
+      allowedRoles.forEach(element => {
+        if (userRole == element) {
+          isMatch = true;
+          return false;
+        }
+      });
+      return isMatch;
+    }
+
+  comparePasswords(fb: FormGroup) {
+    let confirmPswrdCtrl = fb.get('ConfirmPassword');
+    //passwordMismatch
+    //confirmPswrdCtrl.errors={passwordMismatch:true}
+    if (confirmPswrdCtrl.errors == null || 'passwordMismatch' in confirmPswrdCtrl.errors) {
+      if (fb.get('Password').value != confirmPswrdCtrl.value)
+        confirmPswrdCtrl.setErrors({ passwordMismatch: true });
+      else
+        confirmPswrdCtrl.setErrors(null);
+    }
   }
 
-  login(model: User){
-    return this.http.post(this.baseUrl + 'api/user/login', model);
-  }
-
-  getUserProfile(){
-    return this.http.get(this.baseUrl + 'api/UserProfile');
-  }
-
-  // get(medium: string) {
-  //   const getOptions = {
-  //     params: { medium }
-  //   };
-  //   return this.http.get<MediaItemsResponse>('mediaitems', getOptions)
-  //     .pipe(
-  //       map((response: MediaItemsResponse) => {
-  //         return response.mediaItems;
-  //       })
-  //     );
-  // }
-  
-  roleMatch(allowedRoles): boolean {
-    var isMatch = false;
-    var payLoad = JSON.parse(window.atob(localStorage.getItem('token').split('.')[1]));
-    var userRole = payLoad.role;
-    allowedRoles.forEach(element => {
-      if (userRole == element) {
-        isMatch = true;
-        return false;
-      }
-    });
-    return isMatch;
-  }
+//to be fixed
+    logout() {
+      localStorage.removeItem('auth_token');
+    }
 }
+  

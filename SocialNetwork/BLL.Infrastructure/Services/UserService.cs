@@ -15,17 +15,16 @@ namespace BLL.Infrastructure.Services
         public UserService(IUnitOfWork unitOfWork, IMapper mapper) : base(unitOfWork, mapper)
         {
         }
+        public async Task AddUser(UserDTO user)
+        {
+            var userMapped = Mapper.Map<UserDTO, User>(user);
+            await UnitOfWork.User.CreateAsync(userMapped);
+        }
         public async Task<UserDTO> GetUserByIdAsync(int id)
         {
             var result = await UnitOfWork.User.GetByIdAsync(id);
             var resultDTO = Mapper.Map<User, UserDTO>(result);
             return resultDTO;
-        }
-
-        public async Task AddUser(UserDTO user)
-        {
-            var userMapped = Mapper.Map<UserDTO, User>(user);
-            await UnitOfWork.User.CreateAsync(userMapped);
         }
         public async Task<IEnumerable<UserDTO>> GetUsersAsync()
         {
@@ -33,6 +32,32 @@ namespace BLL.Infrastructure.Services
             var resultDTOs = Mapper.Map<IEnumerable<User>, IEnumerable<UserDTO>>(result);
             return resultDTOs;
         }
-
+        public async Task UpdateUserAsync(UserDTO userDTO)
+        {
+            var user = Mapper.Map<UserDTO, User>(userDTO);
+            var oldUser = new User
+            {
+                Id = userDTO.Id,
+                //Email = userDTO.Email,
+                //UserName = userDTO.UserName,
+                //FirstName = userDTO.FirstName,
+                //LastName = userDTO.LastName,
+                //PhoneNumber = userDTO.PhoneNumber,
+                //City = userDTO.City,
+                //Country = userDTO.Country,
+                //University = userDTO.University,
+                //AboutMe = userDTO.AboutMe,
+                //Age = userDTO.Age,
+                //Friendships = (ICollection<Friendship>)userDTO.Friendships,
+                //Messages = (ICollection<Message>)userDTO.Messages,
+            };
+            UnitOfWork.User.Remove(oldUser);
+            await UnitOfWork.User.CreateAsync(user);
+        }
+        public void DeleteUser(UserDTO user)
+        {
+            var userMapped = Mapper.Map<UserDTO, User>(user);
+            UnitOfWork.User.Remove(userMapped);
+        }
     }
 }

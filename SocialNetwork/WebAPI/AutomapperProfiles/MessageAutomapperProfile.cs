@@ -9,6 +9,7 @@ namespace BLL.Infrastructure.AutomapperProfiles
 {
     public class MessageAutomapperProfile : Profile
     {
+        //todo fix me to the  api model
         public MessageAutomapperProfile()
         {
             CreateMap<MessageDTO, Message>();

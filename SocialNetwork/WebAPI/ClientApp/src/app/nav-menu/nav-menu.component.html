@@ -27,11 +27,7 @@
           >
             <a class="nav-link text-dark" [routerLink]="['/']">Profile</a>
           </li>
-          <!-- <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" [routerLink]="['/counter']"
-              >Counter</a
-            >
-          </li>
+          <!-- 
           <li class="nav-item" [routerLinkActive]="['link-active']">
             <a class="nav-link text-dark" [routerLink]="['/fetch-data']"
               >Fetch data</a
@@ -54,7 +50,8 @@
           </li>
           <li class="nav-item" [routerLinkActive]="['link-active']">
             <a class="nav-link text-dark" [routerLink]="['/counter']"
-              > Log Out FIXME </a
+            (click)="onLogout()"
+              > Log Out FIXME router link </a
             >
           </li>
         </ul>

@@ -9,6 +9,7 @@ namespace BLL.Infrastructure.AutomapperProfiles
 {
     public class FriendshipAutomapperProfile : Profile
     {
+        //todo fix me to the  api model
         public FriendshipAutomapperProfile()
         {
             CreateMap<FriendshipDTO, Friendship>();

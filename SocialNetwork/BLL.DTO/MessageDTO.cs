@@ -6,6 +6,7 @@ namespace BLL.DTO
 {
     public class MessageDTO
     {
+        public int Id { get; set; }
         public UserDTO User { get; set; }
         public ChatDTO Chat { get; set; }
 
