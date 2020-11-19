@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "NJ79XA7KDOamfvx2zaRZo6fn8g4EtuGKfEpnzAA5wXAcFPHuJEOs9HXiOPh5S1TaqvFTSm/GklOCcd9W1suxRQ==",
+  "dgSpecHash": "uHCiulW46HIHFhNpjv7K87gIw7mnq7Kxqg/sVIu9tIxAfZy8zmANtJ3pMEAVuHvDy+DcxA71SqMV41Kx5AW6GA==",
   "success": true,
   "projectFilePath": "D:\\sm\\SocialNetwork\\DAL.EF\\DAL.EF.csproj",
   "expectedPackageFiles": [
@@ -25,6 +25,8 @@
     "C:\\Users\\dizzyrog\\.nuget\\packages\\microsoft.aspnetcore.http.features\\2.2.0\\microsoft.aspnetcore.http.features.2.2.0.nupkg.sha512",
     "C:\\Users\\dizzyrog\\.nuget\\packages\\microsoft.aspnetcore.identity\\2.2.0\\microsoft.aspnetcore.identity.2.2.0.nupkg.sha512",
     "C:\\Users\\dizzyrog\\.nuget\\packages\\microsoft.aspnetcore.identity.entityframeworkcore\\3.1.10\\microsoft.aspnetcore.identity.entityframeworkcore.3.1.10.nupkg.sha512",
+    "C:\\Users\\dizzyrog\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\3.1.10\\microsoft.aspnetcore.jsonpatch.3.1.10.nupkg.sha512",
+    "C:\\Users\\dizzyrog\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\3.1.10\\microsoft.aspnetcore.mvc.newtonsoftjson.3.1.10.nupkg.sha512",
     "C:\\Users\\dizzyrog\\.nuget\\packages\\microsoft.aspnetcore.webutilities\\2.2.0\\microsoft.aspnetcore.webutilities.2.2.0.nupkg.sha512",
     "C:\\Users\\dizzyrog\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\dizzyrog\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.0\\microsoft.bcl.hashcode.1.1.0.nupkg.sha512",
@@ -65,7 +67,8 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.win32.registry\\4.5.0\\microsoft.win32.registry.4.5.0.nupkg.sha512",
     "C:\\Users\\dizzyrog\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
-    "C:\\Users\\dizzyrog\\.nuget\\packages\\newtonsoft.json\\11.0.2\\newtonsoft.json.11.0.2.nupkg.sha512",
+    "C:\\Users\\dizzyrog\\.nuget\\packages\\newtonsoft.json\\12.0.2\\newtonsoft.json.12.0.2.nupkg.sha512",
+    "C:\\Users\\dizzyrog\\.nuget\\packages\\newtonsoft.json.bson\\1.0.2\\newtonsoft.json.bson.1.0.2.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\runtime.native.system\\4.3.0\\runtime.native.system.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",

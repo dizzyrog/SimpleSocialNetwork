@@ -8,5 +8,5 @@ D:\sm\SocialNetwork\BLL.DTO\obj\Debug\netcoreapp3.1\BLL.DTO.dll
 D:\sm\SocialNetwork\BLL.DTO\obj\Debug\netcoreapp3.1\BLL.DTO.pdb
 D:\sm\SocialNetwork\BLL.DTO\bin\Debug\netcoreapp3.1\BLL.DTO.runtimeconfig.json
 D:\sm\SocialNetwork\BLL.DTO\bin\Debug\netcoreapp3.1\BLL.DTO.runtimeconfig.dev.json
-D:\sm\SocialNetwork\BLL.DTO\obj\Debug\netcoreapp3.1\BLL.DTO.csproj.CoreCompileInputs.cache
 D:\sm\SocialNetwork\BLL.DTO\obj\Debug\netcoreapp3.1\BLL.DTO.genruntimeconfig.cache
+D:\sm\SocialNetwork\BLL.DTO\obj\Debug\netcoreapp3.1\BLL.DTO.csproj.CoreCompileInputs.cache

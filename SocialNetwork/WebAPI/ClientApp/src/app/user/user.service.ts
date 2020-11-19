@@ -2,6 +2,7 @@ import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User} from './User';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +22,8 @@ export class UserService {
     }, { validator: this.comparePasswords })
   });
 
+  
+  
     getUserByIdObservable (id: number){
       return this.http.get<User>(this.baseUrl+'api/users/'+id);
     }
@@ -28,13 +31,23 @@ export class UserService {
     getUsersObservable (){
       return this.http.get<User[]>(this.baseUrl+'api/users');
     }
-  
+
+    // addHero(hero: Hero): Observable<Hero> {
+    //   return this.http.post<Hero>(this.heroesUrl, hero, httpOptions)
+    //     .pipe(
+    //       catchError(this.handleError('addHero', hero))
+    //     );
+    // }
     updateUser(user: User) {
-      const id =3;
-      return this.http.put<User>(this.baseUrl+'api/users/'+id, user);
-        //.pipe(
-        //  catchError(this.handleError('updateUser', user))
-        //);
+      user.id = 1;
+      return this.http.patch<User>(this.baseUrl+'api/users', user);
+      //return this.http.put<User>(this.baseUrl+'api/users', user);
+        // .pipe(
+        //  catchError(er => {console.log(er)})
+        // );
+    }
+    deleteUser(id){
+      return this.http.delete<User>(this.baseUrl+'api/users/'+id);
     }
    
     getUserProfile() {
@@ -80,9 +93,5 @@ export class UserService {
     }
   }
 
-//to be fixed
-    logout() {
-      localStorage.removeItem('auth_token');
-    }
 }
   

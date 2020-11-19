@@ -22,6 +22,7 @@ import { AuthInterceptor } from './user/auth/auth.interceptor';
 import { AuthGuard } from './user/auth/auth.guard';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     RegistrationComponent,
     LoginComponent,
     HomeComponent,
-    ForbiddenComponent
+    ForbiddenComponent,
+    AdminPanelComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -58,7 +60,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
       { path: 'search', component: FriendSearchComponent},
       { path: 'registration', component: RegistrationComponent },
       { path: 'login', component: LoginComponent},
-      {path:'forbidden',component:ForbiddenComponent}
+      {path:'forbidden',component:ForbiddenComponent},
+      {path:'admin',component:AdminPanelComponent}
     ])
   ],
   providers: [UserService, {

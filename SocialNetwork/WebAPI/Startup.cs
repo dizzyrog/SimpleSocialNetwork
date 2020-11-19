@@ -109,7 +109,7 @@ namespace WebAPI
             );
 
             services.AddCors();
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson() ;
 
 
             var mappingConfig = new MapperConfiguration(mc =>

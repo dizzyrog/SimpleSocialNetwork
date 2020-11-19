@@ -45,6 +45,10 @@
               "target": "Package",
               "version": "[2.2.0, )"
             },
+            "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
+              "target": "Package",
+              "version": "[3.1.10, )"
+            },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[3.1.10, )"
@@ -67,6 +71,9 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
@@ -120,6 +127,10 @@
               "target": "Package",
               "version": "[2.2.0, )"
             },
+            "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
+              "target": "Package",
+              "version": "[3.1.10, )"
+            },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[3.1.10, )"
@@ -142,6 +153,9 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }

@@ -1,30 +1,98 @@
-<form
+<form [formGroup]="profileFormModel" autocomplete="off" (submit)="onSubmit(profileFormModel.value)">
+  <div class="form-group">
+    <label>Username</label>
+    <input class="form-control" formControlName="userName">
+  </div>
+  <div class="form-group">
+    <label>Email</label>
+    <input class="form-control" formControlName="email">
+  </div>
+  <div class="form-group">
+    <label>First Name</label>
+    <input class="form-control" formControlName="firstName">
+  </div>
+  <div class="form-group">
+    <label>Age</label>
+    <input class="form-control" formControlName="age">
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-8 offset-md-2">
+      <button type="submit" class="btn btn-lg btn-block">Update</button>  
+  </div>
+  </div>
+</form>
+<!-- <form
   [formGroup]="form"
   (ngSubmit)="onSubmit(form.value)">
   <ul>
-    <li>
+    
         <a>
             <label for="firstName">First Name</label>
           <div>
             <input type="text" name="firstName" id="firstName" formControlName="firstName">    
           </div>
         </a>
-      <!-- <div *ngIf="form.get('name').hasError('pattern')" class="error">
+       <div *ngIf="form.get('name').hasError('pattern')" class="error">
         Name has invalid characters
-      </div> -->
-    </li>
-    <li>
+      </div> 
+    <a>
         <label for="lastName">Last Name</label>
+        <div>
         <input type="text" name="lastName" id="lastName" formControlName="lastName">
-        <!-- <div *ngIf="form.get('name').hasError('pattern')" class="error">
-          Name has invalid characters
-        </div> -->
-      </li>
-    <li>
+        k </div>
+     </a>
+     <a>
       <label for="age">Age</label>
+      <div>
       <input type="text" name="age" id="age" formControlName="age">
-    </li>
-    <!-- <li>
+    </div>
+    </a>
+
+    <a>
+      <label for="userName">UserName</label>
+    <div>
+      <input type="text" name="userName" id="userName" formControlName="userName">    
+    </div>
+  </a>
+
+  <a>
+    <label for="email">Email</label>
+  <div>
+    <input type="text" name="email" id="email" formControlName="email">    
+  </div>
+</a>
+<a>
+  <label for="phoneNumber">Phone Number</label>
+<div>
+  <input type="text" name="phoneNumber" id="phoneNumber" formControlName="phoneNumber">    
+</div>
+</a>
+<a>
+  <label for="city">City</label>
+<div>
+  <input type="text" name="city" id="city" formControlName="city">    
+</div>
+</a>
+<a>
+  <label for="country">Country</label>
+<div>
+  <input type="text" name="country" id="country" formControlName="country">    
+</div>
+</a>
+<a>
+  <label for="university">University</label>
+<div>
+  <input type="text" name="university" id="university" formControlName="university">    
+</div>
+</a>
+<a>
+  <label for="aboutMe">About Me</label>
+<div>
+  <input type="text" name="aboutMe" id="aboutMe" formControlName="aboutMe">    
+</div>
+</a>
+
+    <li>
       <label for="year">Year</label>
       <input type="text" name="year" id="year" maxlength="4" formControlName="year">
       <div *ngIf="form.get('year').errors as yearErrors" class="error">
@@ -33,18 +101,20 @@
         and 
         {{yearErrors.year.max}}
       </div>
-    </li>  -->
+    </li> 
   </ul>
   <a [routerLink]="['/']">
+    <div>
     <button type="submit" class="btn btn-primary" [disabled]="!form.valid">Save</button>
+  </div>
   </a>
 </form>
 
-<!-- <select name="age" id="age" formControlName="age">
+<select name="age" id="age" formControlName="age">
     <option value="Action">rt</option>
     <option value="Science Fiction">Science Fiction</option>
     <option value="Comedy">Comedy</option>
     <option value="Drama">Drama</option>
     <option value="Horror">Horror</option>
     <option value="Romance">Romance</option>
-  </select> -->
+  </select>   -->

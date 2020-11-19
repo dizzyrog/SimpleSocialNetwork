@@ -20,7 +20,7 @@ namespace WebAPI.Models
         public string Country { get; set; }
         public string University { get; set; }
         public string AboutMe { get; set; }
-        public int Age { get; set; }
+        public int? Age { get; set; }
         // public ICollection<User> Friends { get; set; }
         //public ICollection<FriendshipModel> Friendships { get; set; }
         //public ICollection<MessageModel> Messages { get; set; }

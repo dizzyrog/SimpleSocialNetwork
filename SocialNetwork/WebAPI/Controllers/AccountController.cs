@@ -12,6 +12,9 @@ using System.Text;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using DAL.Domain;
+using BLL.Interfaces;
+using AutoMapper;
+using BLL.DTO;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -22,17 +25,21 @@ namespace WebAPI.Controllers
     public class AccountController : ControllerBase
     {
         private UserManager<UserEntity> _userManager;
+        private IUserService _userService;
         private SignInManager<UserEntity> _signInManager;
+        private IMapper _mapper;
         private readonly ApplicationSettings _appSettings;
         private readonly ILogger<AccountController> _logger;
 
         public AccountController(UserManager<UserEntity> userManager, SignInManager<UserEntity> signInManager,
-            IOptions<ApplicationSettings> appSettings, ILogger<AccountController> logger)
+            IOptions<ApplicationSettings> appSettings, ILogger<AccountController> logger, IMapper mapper, IUserService userService)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _appSettings = appSettings.Value;
             _logger = logger;
+            _mapper = mapper;
+            _userService = userService;
         }
 
         
@@ -41,21 +48,21 @@ namespace WebAPI.Controllers
         //api/Account/register
         public async Task<ActionResult<UserModel>> PostUser(UserModel model)
         {
-
-            var UserEntity = new UserEntity()
-            {
-                UserName = model.UserName,
-                Email = model.Email
-            };
-
             try
             {
+                var UserEntity = new UserEntity()
+                {
+                    UserName = model.UserName,
+                    Email = model.Email
+                };
                 var result = await _userManager.CreateAsync(UserEntity, model.Password);
                 await _userManager.AddToRoleAsync(UserEntity,model.Role);
 
                 var user = await _userManager.FindByNameAsync(model.UserName);
 
-                //TODO Add into resourse database
+                //TODO 
+                var userDTO = _mapper.Map<UserModel, UserDTO>(model);
+                await _userService.AddUser(userDTO);
 
                 return Ok(result);
             }

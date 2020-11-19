@@ -34,11 +34,9 @@
               Password does not match.</label>
           </div>
         </div>
-        <a [routerLink]="['/']">
         <div class="form-row">
           <div class="form-group col-md-8 offset-md-2">
-            <button type="submit" class="btn btn-lg btn-block" [routerLink]="['/']" [disabled]="!service.formModel.valid">Sign Up</button>  
+            <button type="submit" class="btn btn-lg btn-block"[disabled]="!service.formModel.valid">Sign Up</button>  
         </div>
         </div>
-        </a>
       </form>

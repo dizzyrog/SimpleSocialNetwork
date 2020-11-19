@@ -57,14 +57,19 @@ namespace DAL.EF.Repositories
             //TODO create exceptions, check for null
 
             DbSet.Remove(entity);
+            context.SaveChanges();
         }
 
         public void Update(T entity)
         {
 
             //TODO create exceptions, check for null
-
-            DbSet.Update(entity);
+            //context.Entry(entity).State = EntityState.Modified;
+            //TODO insert a into the next line
+            var a =  DbSet.FirstOrDefault(x => x.Id == entity.Id);
+            context.Entry(a).CurrentValues.SetValues(entity);
+            //var a = DbSet.Update(entity);
+            context.SaveChanges();
         }
     }
 }

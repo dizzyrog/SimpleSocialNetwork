@@ -57,19 +57,21 @@ namespace WebAPI.Controllers
 
 
         // PUT api/<UsersController>/5
-        [HttpPut("{userId}")]
-        public async Task<ActionResult> PutUserByIdAsync(int userId, [FromBody] UserModel userModel)
+        [HttpPatch]
+        public ActionResult UpdateUserById([FromBody] UserModel userModel)
         {
             var user = _mapper.Map<UserModel, UserDTO>(userModel);
-            await _userService.UpdateUserAsync(user);
+            _userService.UpdateUser(user);
             return Ok();
         }
 
         // DELETE api/<UsersController>/5
         [HttpDelete("{id}")]
-        [Authorize(Roles = "Admin")]
-        public ActionResult DeleteUserById(int id)
+        //[Authorize(Roles = "Admin")]
+        public async Task<ActionResult> DeleteUserById(int id)
         {
+            var user = await _userService.GetUserByIdAsync(id);
+            _userService.DeleteUser(user);
             return Ok();
         }
 

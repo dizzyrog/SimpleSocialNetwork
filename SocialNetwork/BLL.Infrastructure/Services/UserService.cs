@@ -32,12 +32,13 @@ namespace BLL.Infrastructure.Services
             var resultDTOs = Mapper.Map<IEnumerable<User>, IEnumerable<UserDTO>>(result);
             return resultDTOs;
         }
-        public async Task UpdateUserAsync(UserDTO userDTO)
+        public void UpdateUser(UserDTO userDTO)
         {
             var user = Mapper.Map<UserDTO, User>(userDTO);
-            var oldUser = new User
-            {
-                Id = userDTO.Id,
+            UnitOfWork.User.Update(user);
+            //var oldUser = new User
+            //{
+            //    Id = userDTO.Id,
                 //Email = userDTO.Email,
                 //UserName = userDTO.UserName,
                 //FirstName = userDTO.FirstName,
@@ -50,9 +51,9 @@ namespace BLL.Infrastructure.Services
                 //Age = userDTO.Age,
                 //Friendships = (ICollection<Friendship>)userDTO.Friendships,
                 //Messages = (ICollection<Message>)userDTO.Messages,
-            };
-            UnitOfWork.User.Remove(oldUser);
-            await UnitOfWork.User.CreateAsync(user);
+            //};
+            //UnitOfWork.User.Remove(oldUser);
+            //await UnitOfWork.User.CreateAsync(user);
         }
         public void DeleteUser(UserDTO user)
         {
