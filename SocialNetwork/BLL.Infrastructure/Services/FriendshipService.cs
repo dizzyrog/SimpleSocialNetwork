@@ -2,12 +2,14 @@
 using BLL.DTO;
 using BLL.Interfaces;
 using DAL.Domain;
+using DAL.EF;
 using DAL.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 
 namespace BLL.Infrastructure.Services
 {
@@ -19,23 +21,39 @@ namespace BLL.Infrastructure.Services
             _userService = userService;
         }
 
-        public async Task<IEnumerable<UserDTO>> GetFriendsByUserIdAsync(int userId)
+        public async Task<IEnumerable<UserDTO>> SearchFriendsAsync(SearchDTO searchDTO)
         {
-            var user = await _userService.GetByIdAsync(userId);
+            var users = await _userService.GetUsersAsync();
+            //if (searchDTO.Name != null)
+            
+                var k = searchDTO.Name.Split(" ");
+                var a = users.Where(x => x.FirstName == k[0] || x.LastName == k[0]);
+            
+            return a;
+        }
+        public async Task<IEnumerable<UserDTO>> GetFriendsByUserIdAsync(string userId)
+        {
+            var user = await _userService.GetUserByIdAsync(userId);
             var friends = new List<UserDTO>();
             var friendships = await GetFriendshipsAsync();
-            var selectedFriendships = friendships.Where(t => t.UserId == userId);
+            var selectedFriendships = friendships.Where(t => t.UserId == user.Id);
             foreach (var item in selectedFriendships)
             {
                 friends.Add(await _userService.GetByIdAsync(item.FriendId));
             }
             return friends;
         }
-        //public async Task AddFriendship(FriendshipDTO user)
-        //{
-        //    var userMapped = Mapper.Map<UserDTO, User>(user);
-        //    await UnitOfWork.User.CreateAsync(userMapped);
-        //}
+        public async Task AddFriendshipAsync(UserDTO friend, string userId)
+        {
+            var user = _userService.GetUserByIdAsync(userId);
+            var friendship = new Friendship()
+            {
+                UserId = user.Id,
+                FriendId = friend.Id,
+                ChatId = 2,
+            };
+            await UnitOfWork.Friendship.CreateAsync(friendship);
+        }
         //public async Task<UserDTO> GetUserByIdAsync(int id)
         //{
         //    var result = await UnitOfWork.User.GetByIdAsync(id);
@@ -49,16 +67,5 @@ namespace BLL.Infrastructure.Services
             return resultDTOs;
         }
 
-        
-        //public void UpdateUser(UserDTO userDTO)
-        //{
-        //    var user = Mapper.Map<UserDTO, User>(userDTO);
-        //    UnitOfWork.User.Update(user);
-        //}
-        //public void DeleteUser(UserDTO user)
-        //{
-        //    var userMapped = Mapper.Map<UserDTO, User>(user);
-        //    UnitOfWork.User.Remove(userMapped);
-        //}
     }
 }

@@ -24,33 +24,49 @@ namespace WebAPI.Controllers
             _friendshipService = friendshipService;
             _mapper = mapper;
         }
-        // GET: api/<FriendsController>
-        //TODO change route to friends/user/{userId}
-        [HttpGet("{userId}")]
+
+        // GET: api/friends
+        [Route("friend")]
+        [HttpPost]
+        public async Task<ActionResult<IEnumerable<UserDTO>>> SearchFriendsAsync([FromBody] SearchModel searchModel)
+        {
+            var searchDTO = _mapper.Map<SearchModel, SearchDTO>(searchModel);
+            var res = await _friendshipService.SearchFriendsAsync(searchDTO);
+            if (res != null)
+            {
+                return Ok(res);
+            }
+            return BadRequest();
+        }
+       
+        [Route("user")]
+        [HttpGet]
        // [Authorize(Roles = "Admin, User")]
         public async  Task<ActionResult<IEnumerable<UserDTO>>> GetFriendsByUserIdAsync()
         {
             var userId = GetCurrentUserId();
-            var friends = await _friendshipService.GetFriendsByUserIdAsync(3);
+            var friends = await _friendshipService.GetFriendsByUserIdAsync(userId);
             return Ok(friends);
         }
-
-        // POST api/<FriendsController>
+        //[Route("~/")]
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task<ActionResult> AddFriendAsync([FromBody] UserModel friend)
         {
-        }
+            try
+            {
+                var userId = GetCurrentUserId();
+                var friendDTO = _mapper.Map<UserModel, UserDTO>(friend);
+                await _friendshipService.AddFriendshipAsync(friendDTO, userId);
 
-        // PUT api/<FriendsController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e);
+                throw e;
+                
+            }
+            
         }
-
-        // DELETE api/<FriendsController>/5
-        //[HttpDelete("{id}")]
-        //public void Delete(int id)
-        //{
-        //}
     }
 }

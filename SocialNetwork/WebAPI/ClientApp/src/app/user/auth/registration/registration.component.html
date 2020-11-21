@@ -1,5 +1,5 @@
 
-    <form [formGroup]="service.formModel" autocomplete="off" (submit)="onSubmit()">
+    <form [formGroup]="service.formModel" autocomplete="off" (submit)="onSubmit(service.formModel.value)">
         <div class="form-group required">
           <label>Username</label>
           <input class="form-control" formControlName="UserName">
@@ -68,3 +68,8 @@
         </div>
         </div>
       </form>
+      <div>
+        <a [routerLink]="['/login']">
+            <button class="btn btn-primary">Login</button>
+        </a>
+      </div>

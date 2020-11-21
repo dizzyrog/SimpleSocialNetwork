@@ -10,5 +10,6 @@ namespace DAL.Interfaces.Repositories
     {
         Task<User> GetUserByIdAsync(string id);
         public void UpdateIdentityId(User user);
+        public void UpdateUser(User user);
     }
 }

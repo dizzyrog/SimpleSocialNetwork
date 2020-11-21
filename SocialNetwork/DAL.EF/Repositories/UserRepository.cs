@@ -34,16 +34,97 @@ namespace DAL.EF.Repositories
             //var a = DbSet.Update(entity);
             var entity = DbSetWithAllProperties().FirstOrDefault(u => u.UserName == user.UserName);
 
-            entity.UserIdentityId = user.UserIdentityId;
-
-            context.Set<User>().Update(entity);
-            context.SaveChanges();
+            if (entity.UserIdentityId is null)
+            {
+                entity.UserIdentityId = user.UserIdentityId;
+                context.Set<User>().Update(entity);
+                context.SaveChanges();
+            }
+            
             //context.Entry(user).Property(e => e.UserIdentityId).IsModified = true;
             //context.SaveChanges();
 
 
         }
-        
+        public void UpdateUser(User user)
+        {
+           var a = DbSet.FirstOrDefault(x => x.UserIdentityId == user.UserIdentityId);
+            // context.Entry(a).Property(x => x.Id).IsModified = false;
+            //context.Entry(a).State = EntityState.Modified;
+            //context.Entry(a).CurrentValues.SetValues(user);//.Ignore(x => x.Id); 
+            if (a != null)
+            {
+                context.Entry<User>(user).State = EntityState.Detached;
+                context.Entry<User>(a).State = EntityState.Detached;
+                //context.SaveChanges();
+            }
+            
+            context.Attach(user);
+            context.Update(user);
+            context.Entry<User>(a).Property(x => x.Id).IsModified = false;
+            context.SaveChanges();
+            
+            ////TODO fixme
+            //var entity = DbSetWithAllProperties().FirstOrDefault(u => u.UserName == user.UserName);
+
+            //if (entity.AboutMe == null)
+            //{
+            //    entity.AboutMe = user.AboutMe;
+            //    context.Set<User>().Update(entity);
+            //    context.SaveChanges();
+            //}
+            //if (entity.Age == 0)
+            //{
+            //    entity.Age = user.Age;
+            //    context.Set<User>().Update(entity);
+            //    context.SaveChanges();
+            //}
+            //if (entity.City == null)
+            //{
+            //    entity.City = user.City;
+            //    context.Set<User>().Update(entity);
+            //    context.SaveChanges();
+            //}
+            //if (entity.Country == null)
+            //{
+            //    entity.Country = user.Country;
+            //    context.Set<User>().Update(entity);
+            //    context.SaveChanges();
+            //}
+            //if (entity.Email == null)
+            //{
+            //    entity.Email = user.Email;
+            //    context.Set<User>().Update(entity);
+            //    context.SaveChanges();
+            //}
+            //if (entity.FirstName == null)
+            //{
+            //    entity.FirstName = user.FirstName;
+            //    context.Set<User>().Update(entity);
+            //    context.SaveChanges();
+            //}
+            //if (entity.LastName == null)
+            //{
+            //    entity.LastName = user.LastName;
+            //    context.Set<User>().Update(entity);
+            //    context.SaveChanges();
+            //}
+
+            //if (entity.PhoneNumber == null)
+            //{
+            //    entity.PhoneNumber = user.PhoneNumber;
+            //    context.Set<User>().Update(entity);
+            //    context.SaveChanges();
+            //}
+            //if (entity.University == null)
+            //{
+            //    entity.University = user.University;
+            //    context.Set<User>().Update(entity);
+            //    context.SaveChanges();
+            //}
+        }
+
+
         protected override IQueryable<User> DbSetWithAllProperties()
         {
             return DbSet;

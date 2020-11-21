@@ -36,7 +36,7 @@ namespace BLL.Infrastructure.Services
         public void UpdateUser(UserDTO userDTO)
         {
             var user = Mapper.Map<UserDTO, User>(userDTO);
-            UnitOfWork.User.Update(user);
+            UnitOfWork.User.UpdateUser(user);
         }
         public void UpdateIdentityId(UserDTO userDTO)
         {

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Observable } from 'rxjs';
 import { User } from 'src/app/user/User';
 import { UserService } from 'src/app/user/user.service';
 
@@ -12,18 +13,15 @@ import { UserService } from 'src/app/user/user.service';
 })
 export class EditProfileComponent implements OnInit {
 
-  // form:FormGroup;
-  // user: User;
-  
-
   constructor(public service: UserService, private toastr: ToastrService, private router:Router, private fb: FormBuilder) { }
 
+  user$:Observable<User>
+  user:User
   profileFormModel = this.fb.group({
     firstName: [''],
     lastName: [''],
     age: [''],
     email:[''],
-    userName:[''],
     password: [''],
     phoneNumber: [''],
     city:[''],
@@ -32,7 +30,9 @@ export class EditProfileComponent implements OnInit {
     aboutMe:[''],
 });
   ngOnInit() {
-    this.profileFormModel.reset();
+    
+    this.user$ = this.service.getUserByIdObservable(2);
+    this.user$.subscribe(x=> {this.user = x;} );
   }
 
   onSubmit(user:any) {
@@ -62,21 +62,3 @@ export class EditProfileComponent implements OnInit {
   }
 
 }
-
-
-  
-// ngOnInit() {
-//   this.form = new FormGroup({
-//     firstName: new FormControl(),
-//     lastName: new FormControl(),
-//     age: new FormControl(),
-//     email:new FormControl(),
-//     userName:new FormControl(),
-//     password: new FormControl(),
-//     phoneNumber: new FormControl(),
-//     city:new FormControl(),
-//     country:new FormControl(),
-//     university:new FormControl(),
-//     aboutMe:new FormControl(),
-//     })
-// }

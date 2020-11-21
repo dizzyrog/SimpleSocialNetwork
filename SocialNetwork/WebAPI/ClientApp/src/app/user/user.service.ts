@@ -60,11 +60,18 @@ export class UserService {
     getUserProfile() {
       return this.http.get(this.baseUrl + '/UserProfile');
     }
-    register(){
+    register(body1){
       var body = {
         UserName: this.formModel.value.UserName,
+        FirstName: this.formModel.value.FirstName,
+        LastName: this.formModel.value.LastName,
+        Age: this.formModel.value.Age,
+        City: this.formModel.value.City,
+        Country: this.formModel.value.Country,
+        University: this.formModel.value.University,
+        AboutMe: this.formModel.value.AboutMe,
+        PhoneNumber: this.formModel.value.PhoneNumber,
         Email: this.formModel.value.Email,
-        FullName: this.formModel.value.FullName,
         Password: this.formModel.value.Passwords.Password,
         Role: "user"
       };

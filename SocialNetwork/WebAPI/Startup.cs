@@ -19,10 +19,11 @@ using AspNet.Security.OpenIdConnect.Primitives;
 using WebAPI.Models;
 using DAL.EF.Contexts;
 using AutoMapper;
-using BLL.Infrastructure.AutomapperProfiles;
 using DAL.Interfaces;
 using BLL.Interfaces;
 using BLL.Infrastructure.Services;
+using WebAPI.AutomapperProfiles;
+using BLL.Infrastructure.AutomapperProfiles;
 
 namespace WebAPI
 {
@@ -119,6 +120,7 @@ namespace WebAPI
                 mc.AddProfile(new ChatAutomapperProfile());
                 mc.AddProfile(new FriendshipAutomapperProfile());
                 mc.AddProfile(new MessageAutomapperProfile());
+                mc.AddProfile(new SearchAutomapperProfile());
 
             });
 
@@ -129,7 +131,7 @@ namespace WebAPI
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IFriendshipService, FriendshipService>();
             services.AddTransient<IUnitOfWork, UnitOfWork>();
-            services.AddTransient<DbContext, ApplicationDbContext>();
+            services.AddScoped<DbContext, ApplicationDbContext>();
 
             services.AddHttpContextAccessor();
 

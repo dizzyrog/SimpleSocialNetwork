@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { FriendsService } from 'src/app/friends.service';
 import { User } from 'src/app/user/User';
 import { UserService } from 'src/app/user/user.service';
 
@@ -12,13 +14,41 @@ import { UserService } from 'src/app/user/user.service';
 export class FriendSearchComponent implements OnInit {
   users$:Observable<User[]>
   users: User[];
+  searchResults$:Observable<User[]>
+  searchResults: User[];
+  constructor(private router: Router,private userService: UserService, private friendsService: FriendsService, private fb: FormBuilder) { }
 
-  constructor(private router: Router, private service: UserService) { }
+  searchFormModel = this.fb.group({
+    Name: [''],
+    age: [''],
+    email:[''],
+    password: [''],
+    phoneNumber: [''],
+    city:[''],
+    country:[''],
+    university:[''],
+    aboutMe:[''],
+  });
 
   ngOnInit() {
 
-    this.users$ = this.service.getUsersObservable();
+    this.users$ = this.userService.getUsersObservable();
     this.users$.subscribe(x=> {this.users = x;} );
+    this.searchFormModel.reset();
   }
-
+  search(searchModel:any) {
+    this.searchResults$ =  this.friendsService.searchFriendsObservable(searchModel);
+    this.searchResults$.subscribe(
+      (res: any) => {
+          this.searchResults = res;
+          this.searchFormModel.reset();
+      },
+      err => {
+        console.log(err);
+      }
+    );
+  }
+  addFriend(model){
+this.friendsService.addFriendObservable(model).subscribe();
+  }
 }

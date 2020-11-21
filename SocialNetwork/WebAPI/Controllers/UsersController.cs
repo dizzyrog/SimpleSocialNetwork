@@ -67,7 +67,7 @@ namespace WebAPI.Controllers
 
         // PUT api/<UsersController>/5
         [HttpPatch]
-        public ActionResult UpdateUserById([FromBody] UserModel userModel)
+        public ActionResult UpdateUser([FromBody] UserModel userModel)
         {
             var user = _mapper.Map<UserModel, UserDTO>(userModel);
             user.UserIdentityId = GetCurrentUserId();

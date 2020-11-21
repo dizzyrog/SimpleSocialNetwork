@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace DAL.EF.Migrations.ApplicationDb
+namespace DAL.EF.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20201120185005_initial migrate")]
-    partial class initialmigrate
+    [Migration("20201121144235_initial create")]
+    partial class initialcreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -82,43 +82,6 @@ namespace DAL.EF.Migrations.ApplicationDb
                     b.HasIndex("ChatId");
 
                     b.ToTable("Friendships");
-
-                    b.HasData(
-                        new
-                        {
-                            FriendId = 3,
-                            UserId = 1,
-                            ChatId = 1,
-                            Id = 1
-                        },
-                        new
-                        {
-                            FriendId = 4,
-                            UserId = 1,
-                            ChatId = 2,
-                            Id = 2
-                        },
-                        new
-                        {
-                            FriendId = 3,
-                            UserId = 2,
-                            ChatId = 4,
-                            Id = 3
-                        },
-                        new
-                        {
-                            FriendId = 5,
-                            UserId = 2,
-                            ChatId = 3,
-                            Id = 4
-                        },
-                        new
-                        {
-                            FriendId = 4,
-                            UserId = 3,
-                            ChatId = 5,
-                            Id = 7
-                        });
                 });
 
             modelBuilder.Entity("DAL.Domain.Message", b =>
@@ -194,77 +157,6 @@ namespace DAL.EF.Migrations.ApplicationDb
                     b.HasIndex("UserId");
 
                     b.ToTable("Users");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            AboutMe = "In love with math and computing. Do you dare to complete? DM me then",
-                            Age = 25,
-                            City = "London",
-                            Country = "England",
-                            Email = "ada.love@gmail.com",
-                            FirstName = "Ada",
-                            LastName = "Lovelace",
-                            PhoneNumber = "+380 44 446 6356",
-                            University = "Oxford",
-                            UserName = "ada.love"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            AboutMe = "Shy fancy boy",
-                            Age = 18,
-                            City = "New York",
-                            Country = "USA",
-                            Email = "tim@gmail.com",
-                            FirstName = "Tim",
-                            LastName = "Delaney",
-                            PhoneNumber = "+380 44 538 6141",
-                            University = "Grand Army",
-                            UserName = "timmy"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            AboutMe = "I live in two worlds, one of them is the world of books",
-                            Age = 23,
-                            City = "Starts Hollow",
-                            Country = "USA",
-                            Email = "rory.gilmore@gmail.com",
-                            FirstName = "Lorelai",
-                            LastName = "Gilmore",
-                            PhoneNumber = "+380 44 193 0152",
-                            University = "Harvard",
-                            UserName = "rory"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            AboutMe = "I run the dinner in the downtown, come only hungry",
-                            Age = 45,
-                            City = "Vinnytsia",
-                            Country = "Ukraine",
-                            Email = "luke.danes@gmail.com",
-                            FirstName = "Luke",
-                            LastName = "Danes",
-                            PhoneNumber = "+380 44 038 0434",
-                            UserName = "luke`s"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            AboutMe = "In love with dancing and music, protecting girls` rights",
-                            Age = 17,
-                            City = "New York",
-                            Country = "USA",
-                            Email = "del.marco@gmail.com",
-                            FirstName = "Joey",
-                            LastName = "Del Marco",
-                            PhoneNumber = "+380 44 177 6783",
-                            University = "NYU",
-                            UserName = "jojo"
-                        });
                 });
 
             modelBuilder.Entity("DAL.Domain.Friendship", b =>

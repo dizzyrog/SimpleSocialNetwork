@@ -9,6 +9,8 @@ namespace BLL.Interfaces
     public interface IFriendshipService
     {
         public Task<IEnumerable<FriendshipDTO>> GetFriendshipsAsync();
-        public Task<IEnumerable<UserDTO>> GetFriendsByUserIdAsync(int userId);
+        public Task<IEnumerable<UserDTO>> GetFriendsByUserIdAsync(string userId);
+        public Task<IEnumerable<UserDTO>> SearchFriendsAsync(SearchDTO searchDTO);
+        public Task AddFriendshipAsync(UserDTO friend, string userId);
     }
 }

@@ -19,3 +19,5 @@ D:\sm\SocialNetwork\BLL.Infrastructure\bin\Debug\netcoreapp3.1\BLL.Interfaces.dl
 D:\sm\SocialNetwork\BLL.Infrastructure\bin\Debug\netcoreapp3.1\BLL.DTO.pdb
 D:\sm\SocialNetwork\BLL.Infrastructure\bin\Debug\netcoreapp3.1\BLL.Interfaces.pdb
 D:\sm\SocialNetwork\BLL.Infrastructure\obj\Debug\netcoreapp3.1\BLL.Infrastructure.csproj.CoreCompileInputs.cache
+D:\sm\SocialNetwork\BLL.Infrastructure\bin\Debug\netcoreapp3.1\DAL.EF.dll
+D:\sm\SocialNetwork\BLL.Infrastructure\bin\Debug\netcoreapp3.1\DAL.EF.pdb

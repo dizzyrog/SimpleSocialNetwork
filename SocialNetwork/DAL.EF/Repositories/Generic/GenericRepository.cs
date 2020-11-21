@@ -13,11 +13,14 @@ namespace DAL.EF.Repositories
     {
         protected DbSet<T> DbSet { get; }
         protected DbContext context;
+        
         protected GenericRepository(DbContext context)
         {
             DbSet = context.Set<T>();
             this.context = context;
         }
+
+        protected abstract IQueryable<T> DbSetWithAllProperties();
 
         public async Task<T> GetByIdAsync(int id)
         {
@@ -41,7 +44,7 @@ namespace DAL.EF.Repositories
             return entities;
         }
 
-        protected abstract IQueryable<T> DbSetWithAllProperties();
+        
 
         public async Task CreateAsync(T entity)
         {

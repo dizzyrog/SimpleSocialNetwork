@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
+import { SearchModel } from './searchModel';
 import { User } from './user/User';
 
 @Injectable({
@@ -11,11 +12,15 @@ constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: strin
 
 
 
-  getFriendsByUserIdObservable (id: number){
-    return this.http.get<User[]>(this.baseUrl+'api/friends/'+id);
+  getFriendsByUserIdObservable (){
+    return this.http.get<User[]>(this.baseUrl+'api/friends/user');
   }
 
-  getUsersObservable (){
-    return this.http.get<User[]>(this.baseUrl+'api/users');
+  searchFriendsObservable (model: SearchModel){
+    return this.http.post<User[]>(this.baseUrl+'api/friends/friend', model);
   }
+
+ addFriendObservable(model:User){
+    return this.http.post<User>(this.baseUrl+'api/friends', model);
+ }
 }

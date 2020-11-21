@@ -11,6 +11,13 @@ namespace DAL.EF.Configurations
     {
         public void Configure(EntityTypeBuilder<User> builder)
         {
+            //builder
+            //    .HasIndex(u => u.UserName)
+            //    .IsUnique();
+
+            //builder
+            //    .HasIndex(u => u.Email)
+            //    .IsUnique();
         }
     }
 }

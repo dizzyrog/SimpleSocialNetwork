@@ -11,42 +11,42 @@ namespace DAL.EF.DataSeeders
         public static void SeedDatabase(ModelBuilder modelBuilder)
         {
 
-            modelBuilder.Entity<Friendship>().HasData(
-                 new Friendship()
-                 {
-                     Id = 1,
-                     UserId = 1,
-                     ChatId =1,
-                     FriendId = 3,
-                 },
-                new Friendship()
-                {
-                    Id = 2,
-                    UserId = 1,
-                    ChatId = 2,
-                    FriendId = 4,
-                },
-                new Friendship()
-                {
-                    Id = 3,
-                    UserId = 2,
-                    ChatId = 4,
-                    FriendId = 3,
-                },
-                new Friendship()
-                {
-                    Id = 4,
-                    UserId = 2,
-                    ChatId = 3,
-                    FriendId = 5,
-                },
-                new Friendship()
-                {
-                    Id = 7,
-                    UserId = 3,
-                    ChatId = 5,
-                    FriendId = 4,
-                }
+            //modelBuilder.Entity<Friendship>().HasData(
+            //     new Friendship()
+            //     {
+            //         Id = 1,
+            //         UserId = 1,
+            //         ChatId =1,
+            //         FriendId = 3,
+            //     },
+            //    new Friendship()
+            //    {
+            //        Id = 2,
+            //        UserId = 1,
+            //        ChatId = 2,
+            //        FriendId = 4,
+            //    },
+            //    new Friendship()
+            //    {
+            //        Id = 3,
+            //        UserId = 2,
+            //        ChatId = 4,
+            //        FriendId = 3,
+            //    },
+            //    new Friendship()
+            //    {
+            //        Id = 4,
+            //        UserId = 2,
+            //        ChatId = 3,
+            //        FriendId = 5,
+            //    },
+            //    new Friendship()
+            //    {
+            //        Id = 7,
+            //        UserId = 3,
+            //        ChatId = 5,
+            //        FriendId = 4,
+            //    }
                 //new Friendship()
                 //{
                 //    Id = 5,
@@ -83,7 +83,7 @@ namespace DAL.EF.DataSeeders
                 //    ChatId = 3,
                 //    FriendId = 2,
                 //}
-            );
+            //);
         }
     }
 }

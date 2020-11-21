@@ -8,7 +8,7 @@ namespace BLL.Infrastructure.Services
 {
     public abstract class BaseService
     {
-        protected IUnitOfWork UnitOfWork { get; }
+        protected IUnitOfWork UnitOfWork { get; set;  }
         protected IMapper Mapper { get; set; }
 
         protected BaseService(IUnitOfWork unitOfWork, IMapper mapper)

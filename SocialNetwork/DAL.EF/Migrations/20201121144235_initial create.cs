@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace DAL.EF.Migrations.ApplicationDb
+namespace DAL.EF.Migrations
 {
-    public partial class initialmigrate : Migration
+    public partial class initialcreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -112,30 +112,6 @@ namespace DAL.EF.Migrations.ApplicationDb
                     { 3, 4 },
                     { 4, 3 },
                     { 5, 7 }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Users",
-                columns: new[] { "Id", "AboutMe", "Age", "City", "Country", "Email", "FirstName", "LastName", "PhoneNumber", "University", "UserId", "UserIdentityId", "UserName" },
-                values: new object[,]
-                {
-                    { 1, "In love with math and computing. Do you dare to complete? DM me then", 25, "London", "England", "ada.love@gmail.com", "Ada", "Lovelace", "+380 44 446 6356", "Oxford", null, null, "ada.love" },
-                    { 2, "Shy fancy boy", 18, "New York", "USA", "tim@gmail.com", "Tim", "Delaney", "+380 44 538 6141", "Grand Army", null, null, "timmy" },
-                    { 3, "I live in two worlds, one of them is the world of books", 23, "Starts Hollow", "USA", "rory.gilmore@gmail.com", "Lorelai", "Gilmore", "+380 44 193 0152", "Harvard", null, null, "rory" },
-                    { 4, "I run the dinner in the downtown, come only hungry", 45, "Vinnytsia", "Ukraine", "luke.danes@gmail.com", "Luke", "Danes", "+380 44 038 0434", null, null, null, "luke`s" },
-                    { 5, "In love with dancing and music, protecting girls` rights", 17, "New York", "USA", "del.marco@gmail.com", "Joey", "Del Marco", "+380 44 177 6783", "NYU", null, null, "jojo" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Friendships",
-                columns: new[] { "FriendId", "UserId", "ChatId", "Id" },
-                values: new object[,]
-                {
-                    { 3, 1, 1, 1 },
-                    { 3, 2, 4, 3 },
-                    { 4, 1, 2, 2 },
-                    { 4, 3, 5, 7 },
-                    { 5, 2, 3, 4 }
                 });
 
             migrationBuilder.CreateIndex(

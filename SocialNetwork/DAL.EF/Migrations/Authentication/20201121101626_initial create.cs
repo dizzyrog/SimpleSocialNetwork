@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace DAL.EF.Migrations
+namespace DAL.EF.Migrations.Authentication
 {
     public partial class initialcreate : Migration
     {
@@ -155,12 +155,12 @@ namespace DAL.EF.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "1", "311c6039-413b-4516-92ff-6edd01f1beb9", "Admin", "ADMIN" });
+                values: new object[] { "1", "b1a6a48f-dd5c-4b5a-af27-265cfa8dea9d", "Admin", "ADMIN" });
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "2", "fb86b354-00f8-48d2-a482-31becb0b9628", "User", "USER" });
+                values: new object[] { "2", "4c9465f7-6316-4ec7-bb23-e2599d06cfa0", "User", "USER" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
