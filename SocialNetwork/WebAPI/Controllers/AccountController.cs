@@ -22,7 +22,7 @@ namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AccountController : ControllerBase
+    public class AccountController : BaseController
     {
         private UserManager<UserEntity> _userManager;
         private IUserService _userService;
@@ -60,10 +60,11 @@ namespace WebAPI.Controllers
 
                 var user = await _userManager.FindByNameAsync(model.UserName);
 
-                //TODO 
+                //TODO call login method, so user would not neded to login after registration
                 var userDTO = _mapper.Map<UserModel, UserDTO>(model);
                 await _userService.AddUser(userDTO);
 
+                await Login (model);
                 return Ok(result);
             }
             catch (Exception ex)
@@ -95,6 +96,9 @@ namespace WebAPI.Controllers
                     Expires = DateTime.UtcNow.AddDays(1),
                     SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_appSettings.JWT_Secret)), SecurityAlgorithms.HmacSha256Signature)
                 };
+                var userDTO = _mapper.Map<UserModel, UserDTO>(model);
+                userDTO.UserIdentityId = user.Id;
+                _userService.UpdateIdentityId(userDTO);
                 var tokenHandler = new JwtSecurityTokenHandler();
                 var securityToken = tokenHandler.CreateToken(tokenDescriptor);
                 var token = tokenHandler.WriteToken(securityToken);

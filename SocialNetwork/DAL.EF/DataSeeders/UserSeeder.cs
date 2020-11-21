@@ -27,7 +27,18 @@ namespace DAL.EF.DataSeeders
                     Age = 25 ,
                     Friendships = new Collection<Friendship>() 
                     { 
-
+                        //new Friendship()
+                        //{
+                        //    Id = 1,
+                        //    UserId = 1,
+                        //    FriendId = 3,
+                        //},
+                        //new Friendship()
+                        //{
+                        //    Id = 2,
+                        //    UserId = 1,
+                        //    FriendId = 4,
+                        //}
                     },
                     Messages = new Collection<Message>() { }
                     },
@@ -44,7 +55,21 @@ namespace DAL.EF.DataSeeders
                     University = "Grand Army",
                     AboutMe = "Shy fancy boy",
                     Age = 18,
-                    Friendships = new Collection<Friendship>() { },
+                    Friendships = new Collection<Friendship>() {
+                    
+                        //new Friendship()
+                        //{
+                        //    Id = 3,
+                        //    UserId = 2,
+                        //    FriendId = 3,
+                        //},
+                        //new Friendship()
+                        //{
+                        //    Id = 4,
+                        //    UserId = 2,
+                        //    FriendId = 5,
+                        //}
+                    },
                     Messages = new Collection<Message>() { }
                 },
                 new User
@@ -60,7 +85,27 @@ namespace DAL.EF.DataSeeders
                     University = "Harvard",
                     AboutMe = "I live in two worlds, one of them is the world of books",
                     Age = 23,
-                    Friendships = new Collection<Friendship>() { },
+                    Friendships = new Collection<Friendship>()
+                    {
+                        //new Friendship()
+                        //{
+                        //    Id = 5,
+                        //    UserId = 3,
+                        //    FriendId = 1,
+                        //},
+                        //new Friendship()
+                        //{
+                        //    Id = 6,
+                        //    UserId = 3,
+                        //    FriendId = 2,
+                        //},
+                        //new Friendship()
+                        //{
+                        //    Id =7,
+                        //    UserId = 3,
+                        //    FriendId = 4,
+                        //}
+                    },
                     Messages = new Collection<Message>() { }
                 },
                 new User
@@ -76,7 +121,22 @@ namespace DAL.EF.DataSeeders
                     University = null,
                     AboutMe = "I run the dinner in the downtown, come only hungry",
                     Age = 45,
-                    Friendships = new Collection<Friendship>() { },
+                    Friendships = new Collection<Friendship>()
+                    {
+
+                        //new Friendship()
+                        //{
+                        //    Id =8 ,
+                        //    UserId = 4,
+                        //    FriendId = 1,
+                        //},
+                        //new Friendship()
+                        //{
+                        //    Id = 9,
+                        //    UserId = 4,
+                        //    FriendId = 3,
+                        //}
+                    },
                     Messages = new Collection<Message>() { }
                 },
                 new User
@@ -92,7 +152,15 @@ namespace DAL.EF.DataSeeders
                     University = "NYU",
                     AboutMe = "In love with dancing and music, protecting girls` rights",
                     Age = 17,
-                    Friendships = new Collection<Friendship>() { },
+                    Friendships = new Collection<Friendship>() 
+                    {
+                        //new Friendship()
+                        //{
+                        //    Id =10 ,
+                        //    UserId = 5,
+                        //    FriendId = 2,
+                        //}
+                    },
                     Messages = new Collection<Message>() { }
                 }
                 );

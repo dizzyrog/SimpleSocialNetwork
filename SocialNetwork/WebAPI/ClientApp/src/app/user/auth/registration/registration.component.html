@@ -12,10 +12,6 @@
           <label class="text-danger" *ngIf="service.formModel.get('Email').touched && service.formModel.get('Email').errors?.email">Invalid
             email address.</label>
         </div>
-        <div class="form-group">
-          <label>Full Name</label>
-          <input class="form-control" formControlName="FullName">
-        </div>
         <div formGroupName="Passwords">
           <div class="form-group required">
             <label>Password</label>
@@ -34,9 +30,41 @@
               Password does not match.</label>
           </div>
         </div>
+        <div class="form-group">
+          <label>First Name</label>
+          <input class="form-control" formControlName="FirstName">
+        </div>
+        <div class="form-group">
+          <label>Last Name</label>
+          <input class="form-control" formControlName="LastName">
+        </div>
+        <div class="form-group">
+          <label>Age</label>
+          <input class="form-control" formControlName="Age">
+        </div>
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input class="form-control" formControlName="PhoneNumber">
+        </div>
+        <div class="form-group">
+          <label>City</label>
+          <input class="form-control" formControlName="City">
+        </div>
+        <div class="form-group">
+          <label>Country</label>
+          <input class="form-control" formControlName="Country">
+        </div>
+        <div class="form-group">
+          <label>University</label>
+          <input class="form-control" formControlName="University">
+        </div>
+        <div class="form-group">
+          <label>About Me</label>
+          <input class="form-control" formControlName="AboutMe">
+        </div>
         <div class="form-row">
           <div class="form-group col-md-8 offset-md-2">
-            <button type="submit" class="btn btn-lg btn-block"[disabled]="!service.formModel.valid">Sign Up</button>  
+            <button type="submit" class="btn btn-lg btn-block"[disabled]="!service.formModel.valid">Register</button>  
         </div>
         </div>
       </form>

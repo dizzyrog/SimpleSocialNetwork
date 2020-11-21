@@ -39,7 +39,8 @@ namespace DAL.EF.Contexts
             ChatSeeder.SeedDatabase(modelBuilder);
             FriendshipSeeder.SeedDatabase(modelBuilder);
             //MessageSeeder.SeedDatabase(modelBuilder);
-            
+
+
         }
     }
 }

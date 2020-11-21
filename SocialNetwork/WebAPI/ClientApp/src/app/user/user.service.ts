@@ -11,11 +11,18 @@ import { catchError } from 'rxjs/operators';
 export class UserService {
 
   constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string, private fb: FormBuilder) { }
-
+  
   formModel = this.fb.group({
     UserName: ['', Validators.required],
     Email: ['', Validators.email],
-    FullName: [''],
+    FirstName: [''],
+    LastName: [''],
+    Age: [''],
+    PhoneNumber: [''],
+    City:[''],
+    Country:[''],
+    University:[''],
+    AboutMe:[''],
     Passwords: this.fb.group({
       Password: ['', [Validators.required, Validators.minLength(4)]],
       ConfirmPassword: ['', Validators.required]

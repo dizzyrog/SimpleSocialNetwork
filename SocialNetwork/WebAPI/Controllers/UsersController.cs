@@ -2,11 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using AutoMapper;
 using BLL.DTO;
 using BLL.Interfaces;
+using DAL.Domain;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using WebAPI.Models;
 
@@ -17,16 +21,20 @@ namespace WebAPI.Controllers
     [Route("api/users")]
     //[Authorize(Roles = "Admin, User")]
     [ApiController]
-    public class UsersController : ControllerBase
+    public class UsersController : BaseController
     {
 
         private readonly IUserService _userService;
         private readonly IMapper _mapper;
-        public UsersController(IUserService userService, IMapper mapper)
+        private readonly UserManager<UserEntity> _userManager;
+        private readonly IHttpContextAccessor _httpContextAccessor;
+        public UsersController(IUserService userService, IMapper mapper, UserManager<UserEntity> userManager, IHttpContextAccessor httpContextAccessor)
         {
             _userService = userService;
             _mapper = mapper;
-        }
+            _userManager = userManager;
+            _httpContextAccessor = httpContextAccessor;
+    }
         // GET: api/users
         [HttpGet]
         public async Task<ActionResult<IEnumerable<UserDTO>>> GetUsersAsync()
@@ -41,11 +49,12 @@ namespace WebAPI.Controllers
     
 
         // GET api/<UsersController>/5
-        [HttpGet("{userId}")]
-        public async Task<ActionResult<UserDTO>> GetUserByIdAsync(int userId)
+        [HttpGet("{id}")]
+        public async Task<ActionResult<UserDTO>> GetUserByIdAsync(int id)
         {
+            var userId = GetCurrentUserId();
             var res = await _userService.GetUserByIdAsync(userId);
-
+            
             //TODO create a method for check
             if (res != null)
             {
@@ -61,6 +70,7 @@ namespace WebAPI.Controllers
         public ActionResult UpdateUserById([FromBody] UserModel userModel)
         {
             var user = _mapper.Map<UserModel, UserDTO>(userModel);
+            user.UserIdentityId = GetCurrentUserId();
             _userService.UpdateUser(user);
             return Ok();
         }
@@ -70,10 +80,11 @@ namespace WebAPI.Controllers
         //[Authorize(Roles = "Admin")]
         public async Task<ActionResult> DeleteUserById(int id)
         {
-            var user = await _userService.GetUserByIdAsync(id);
+            //TODO delete by model not id mark as deleted
+            var user = await _userService.GetByIdAsync(id);
             _userService.DeleteUser(user);
             return Ok();
         }
-
+        
     }
 }

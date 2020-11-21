@@ -5,6 +5,7 @@ using DAL.Domain;
 using DAL.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -20,9 +21,9 @@ namespace BLL.Infrastructure.Services
             var userMapped = Mapper.Map<UserDTO, User>(user);
             await UnitOfWork.User.CreateAsync(userMapped);
         }
-        public async Task<UserDTO> GetUserByIdAsync(int id)
+        public async Task<UserDTO> GetUserByIdAsync(string id)
         {
-            var result = await UnitOfWork.User.GetByIdAsync(id);
+            var result = await UnitOfWork.User.GetUserByIdAsync(id);
             var resultDTO = Mapper.Map<User, UserDTO>(result);
             return resultDTO;
         }
@@ -36,29 +37,30 @@ namespace BLL.Infrastructure.Services
         {
             var user = Mapper.Map<UserDTO, User>(userDTO);
             UnitOfWork.User.Update(user);
-            //var oldUser = new User
-            //{
-            //    Id = userDTO.Id,
-                //Email = userDTO.Email,
-                //UserName = userDTO.UserName,
-                //FirstName = userDTO.FirstName,
-                //LastName = userDTO.LastName,
-                //PhoneNumber = userDTO.PhoneNumber,
-                //City = userDTO.City,
-                //Country = userDTO.Country,
-                //University = userDTO.University,
-                //AboutMe = userDTO.AboutMe,
-                //Age = userDTO.Age,
-                //Friendships = (ICollection<Friendship>)userDTO.Friendships,
-                //Messages = (ICollection<Message>)userDTO.Messages,
-            //};
-            //UnitOfWork.User.Remove(oldUser);
-            //await UnitOfWork.User.CreateAsync(user);
+        }
+        public void UpdateIdentityId(UserDTO userDTO)
+        {
+            var userMapped = Mapper.Map<UserDTO, User>(userDTO);
+            UnitOfWork.User.UpdateIdentityId(userMapped);
+
+            //var propertiesNew = userDTO.GetType().GetProperties().Where(p => p.PropertyType == typeof(string) && p.CanRead).Select(p => p.GetValue(userDTO));
+          
+            //if (properties.All(value => !string.IsNullOrEmpty(value)))
+                //context.Entry(user).Property(e => e.).IsModified = true;
+            //context.Entry(user).Collection(e => e.Images).IsModified = true;
+
         }
         public void DeleteUser(UserDTO user)
         {
             var userMapped = Mapper.Map<UserDTO, User>(user);
             UnitOfWork.User.Remove(userMapped);
+        }
+
+        public async Task<UserDTO> GetByIdAsync(int id)
+        {
+            var result = await UnitOfWork.User.GetByIdAsync(id); 
+            var resultDTO = Mapper.Map<User, UserDTO>(result);
+            return resultDTO;
         }
     }
 }

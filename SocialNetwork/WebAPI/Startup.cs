@@ -41,7 +41,8 @@ namespace WebAPI
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
+                    Configuration.GetConnectionString("DefaultConnection"))
+                   .EnableSensitiveDataLogging());
 
             services.AddDbContext<AuthenticationContext>(
             (options =>
@@ -126,8 +127,11 @@ namespace WebAPI
 
 
             services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IFriendshipService, FriendshipService>();
             services.AddTransient<IUnitOfWork, UnitOfWork>();
             services.AddTransient<DbContext, ApplicationDbContext>();
+
+            services.AddHttpContextAccessor();
 
             var key = Encoding.UTF8.GetBytes(Configuration["ApplicationSettings:JWT_Secret"].ToString());
 

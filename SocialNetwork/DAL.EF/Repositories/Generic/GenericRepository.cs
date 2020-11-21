@@ -66,6 +66,7 @@ namespace DAL.EF.Repositories
             //TODO create exceptions, check for null
             //context.Entry(entity).State = EntityState.Modified;
             //TODO insert a into the next line
+            
             var a =  DbSet.FirstOrDefault(x => x.Id == entity.Id);
             context.Entry(a).CurrentValues.SetValues(entity);
             //var a = DbSet.Update(entity);

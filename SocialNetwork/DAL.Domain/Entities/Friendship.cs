@@ -8,8 +8,8 @@ namespace DAL.Domain
     public class Friendship : BaseEntity
     {
         public int UserId { get; set; }
-        [NotMapped]
-        public User User { get; set; }
+        //[NotMapped]
+        //public User User { get; set; }
         public int FriendId { get; set; }
         public User Friend { get; set; }
         public int ChatId { get; set; }

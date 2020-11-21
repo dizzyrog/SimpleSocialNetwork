@@ -20,14 +20,7 @@ export class ProfileComponent implements OnInit {
 
     this.user$ = this.service.getUserByIdObservable(2);
     this.user$.subscribe(x=> {this.user = x;} );
-    // this.service.getUserProfile().subscribe(
-    //   res => {
-    //     this.userDetails = res;
-    //   },
-    //   err => {
-    //     console.log(err);
-      //},
-    //);
+   
 
   }
    

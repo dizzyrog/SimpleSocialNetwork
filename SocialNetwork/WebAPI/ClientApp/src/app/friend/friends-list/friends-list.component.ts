@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { Friend } from '../friend';
-import { FriendsService } from '../friends.service';
+import { FriendsService } from 'src/app/friends.service';
+import { User } from 'src/app/user/User';
 
 @Component({
   selector: 'app-friends-list',
@@ -9,14 +10,16 @@ import { FriendsService } from '../friends.service';
   styleUrls: ['./friends-list.component.css']
 })
 export class FriendsListComponent implements OnInit {
+  friends$:Observable<User[]>
+  friends: User[];
 
-  friends$:Observable<Friend[]>
-  friends: Friend[];
-  constructor( private friendService: FriendsService) { }
+  constructor(private router: Router, private service: FriendsService) { }
 
   ngOnInit() {
-    this.friends$ = this.friendService.getFriendsByUserIdObservable(3);
+
+    this.friends$ = this.service.getFriendsByUserIdObservable(2);
     this.friends$.subscribe(x=> {this.friends = x;} );
+
   }
 
   public editInfo(){

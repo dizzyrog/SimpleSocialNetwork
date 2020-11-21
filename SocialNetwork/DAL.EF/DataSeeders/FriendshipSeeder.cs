@@ -12,78 +12,78 @@ namespace DAL.EF.DataSeeders
         {
 
             modelBuilder.Entity<Friendship>().HasData(
-                new Friendship
-                {
-                    Id =1,
-                    UserId = 5,
-                    FriendId =2,
-                    ChatId =1,
-                },
-                new Friendship
+                 new Friendship()
+                 {
+                     Id = 1,
+                     UserId = 1,
+                     ChatId =1,
+                     FriendId = 3,
+                 },
+                new Friendship()
                 {
                     Id = 2,
                     UserId = 1,
-                    FriendId =3,
-                    ChatId = 1,
+                    ChatId = 2,
+                    FriendId = 4,
                 },
-                new Friendship
+                new Friendship()
                 {
                     Id = 3,
-                    UserId = 1,
-                    FriendId =3,
-                    ChatId =1,
+                    UserId = 2,
+                    ChatId = 4,
+                    FriendId = 3,
                 },
-                new Friendship
+                new Friendship()
                 {
                     Id = 4,
-                    UserId = 3,
-                    FriendId =1,
-                    ChatId =1,
+                    UserId = 2,
+                    ChatId = 3,
+                    FriendId = 5,
                 },
-                new Friendship
-                {
-                    Id = 5,
-                    UserId = 3,
-                    FriendId =2,
-                    ChatId = 1,
-                },
-                new Friendship
-                {
-                    Id = 6,
-                    UserId = 3,
-                    FriendId =4,
-                    ChatId = 1,
-                },
-                new Friendship
+                new Friendship()
                 {
                     Id = 7,
-                    UserId = 4,
-                    FriendId =1,
-                    ChatId =1,
-                },
-                new Friendship
-                {
-                    Id = 8,
-                    UserId = 4,
-                    FriendId =3,
-                    ChatId = 1,
-                },
-                new Friendship
-                {
-                    Id = 9,
-                    UserId = 2,
-                    FriendId =3,
-                    ChatId = 1,
-                },
-                new Friendship
-                {
-                    Id = 10,
-                    UserId = 2,
-                    FriendId =5,
-                    ChatId = 1,
+                    UserId = 3,
+                    ChatId = 5,
+                    FriendId = 4,
                 }
-                );
+                //new Friendship()
+                //{
+                //    Id = 5,
+                //    UserId = 3,
+                //    ChatId = 1,
+                //    FriendId = 1,
+                //},
+                //new Friendship()
+                //{
+                //    Id = 6,
+                //    UserId = 3,
+                //    ChatId = 4,
+                //    FriendId = 2,
+                //},
+                //new Friendship()
+                //{
+                //    Id = 8,
+                //    UserId = 4,
+                //    ChatId = 2,
+                //    FriendId = 1,
+                //},
+                //new Friendship()
+                //{
+                //    Id = 9,
+                //    UserId = 4,
+                //    ChatId = 5,
+                //    FriendId = 3,
+                //},
 
+                //new Friendship()
+                //{
+                //    Id = 10,
+                //    UserId = 5,
+                //    ChatId = 3,
+                //    FriendId = 2,
+                //}
+            );
         }
     }
 }

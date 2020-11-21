@@ -12,18 +12,24 @@ namespace DAL.EF.Configurations
         public void Configure(EntityTypeBuilder<Friendship> builder)
         {
 
-            //builder
-            //    .HasKey(f => new { f.Chat, f.UserId });
+            builder
+                .HasKey(f => new { f.FriendId, f.UserId });
 
             //builder
             //    .HasOne(f => f.User)
-            //    .WithMany(u => u.Friendships)
+            //    .WithMany(u => u.Friends)
             //    .HasForeignKey(f => f.UserId);
+
+            //builder
+            //    .HasOne(f => f.Friend)
+            //    .WithMany(u => u.Friendships)
+            //    .HasForeignKey(f => f.FriendId);
 
             //builder
             //    .HasOne(f => f.Chat)
             //    .WithMany(c => c.Friendships)
             //    .HasForeignKey(f => f.ChatId);
+
         }
      }
 }

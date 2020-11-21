@@ -2,7 +2,7 @@
 
 namespace DAL.EF.Migrations.ApplicationDb
 {
-    public partial class initialcreate : Migration
+    public partial class initialmigrate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -25,6 +25,7 @@ namespace DAL.EF.Migrations.ApplicationDb
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    UserIdentityId = table.Column<string>(nullable: true),
                     FirstName = table.Column<string>(nullable: true),
                     LastName = table.Column<string>(nullable: true),
                     UserName = table.Column<string>(nullable: true),
@@ -34,26 +35,32 @@ namespace DAL.EF.Migrations.ApplicationDb
                     Country = table.Column<string>(nullable: true),
                     University = table.Column<string>(nullable: true),
                     AboutMe = table.Column<string>(nullable: true),
-                    Age = table.Column<int>(nullable: false)
+                    Age = table.Column<int>(nullable: false),
+                    UserId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Users", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Users_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Friendships",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
                     UserId = table.Column<int>(nullable: false),
                     FriendId = table.Column<int>(nullable: false),
+                    Id = table.Column<int>(nullable: false),
                     ChatId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Friendships", x => x.Id);
+                    table.PrimaryKey("PK_Friendships", x => new { x.FriendId, x.UserId });
                     table.ForeignKey(
                         name: "FK_Friendships_Chats_ChatId",
                         column: x => x.ChatId,
@@ -98,46 +105,43 @@ namespace DAL.EF.Migrations.ApplicationDb
             migrationBuilder.InsertData(
                 table: "Chats",
                 columns: new[] { "Id", "FriendshipId" },
-                values: new object[] { 1, 1 });
+                values: new object[,]
+                {
+                    { 1, 1 },
+                    { 2, 2 },
+                    { 3, 4 },
+                    { 4, 3 },
+                    { 5, 7 }
+                });
 
             migrationBuilder.InsertData(
                 table: "Users",
-                columns: new[] { "Id", "AboutMe", "Age", "City", "Country", "Email", "FirstName", "LastName", "PhoneNumber", "University", "UserName" },
+                columns: new[] { "Id", "AboutMe", "Age", "City", "Country", "Email", "FirstName", "LastName", "PhoneNumber", "University", "UserId", "UserIdentityId", "UserName" },
                 values: new object[,]
                 {
-                    { 1, "In love with math and computing. Do you dare to complete? DM me then", 25, "London", "England", "ada.love@gmail.com", "Ada", "Lovelace", "+380 44 446 6356", "Oxford", "ada.love" },
-                    { 2, "Shy fancy boy", 18, "New York", "USA", "tim@gmail.com", "Tim", "Delaney", "+380 44 538 6141", "Grand Army", "timmy" },
-                    { 3, "I live in two worlds, one of them is the world of books", 23, "Starts Hollow", "USA", "rory.gilmore@gmail.com", "Lorelai", "Gilmore", "+380 44 193 0152", "Harvard", "rory" },
-                    { 4, "I run the dinner in the downtown, come only hungry", 45, "Vinnytsia", "Ukraine", "luke.danes@gmail.com", "Luke", "Danes", "+380 44 038 0434", null, "luke`s" },
-                    { 5, "In love with dancing and music, protecting girls` rights", 17, "New York", "USA", "del.marco@gmail.com", "Joey", "Del Marco", "+380 44 177 6783", "NYU", "jojo" }
+                    { 1, "In love with math and computing. Do you dare to complete? DM me then", 25, "London", "England", "ada.love@gmail.com", "Ada", "Lovelace", "+380 44 446 6356", "Oxford", null, null, "ada.love" },
+                    { 2, "Shy fancy boy", 18, "New York", "USA", "tim@gmail.com", "Tim", "Delaney", "+380 44 538 6141", "Grand Army", null, null, "timmy" },
+                    { 3, "I live in two worlds, one of them is the world of books", 23, "Starts Hollow", "USA", "rory.gilmore@gmail.com", "Lorelai", "Gilmore", "+380 44 193 0152", "Harvard", null, null, "rory" },
+                    { 4, "I run the dinner in the downtown, come only hungry", 45, "Vinnytsia", "Ukraine", "luke.danes@gmail.com", "Luke", "Danes", "+380 44 038 0434", null, null, null, "luke`s" },
+                    { 5, "In love with dancing and music, protecting girls` rights", 17, "New York", "USA", "del.marco@gmail.com", "Joey", "Del Marco", "+380 44 177 6783", "NYU", null, null, "jojo" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Friendships",
-                columns: new[] { "Id", "ChatId", "FriendId", "UserId" },
+                columns: new[] { "FriendId", "UserId", "ChatId", "Id" },
                 values: new object[,]
                 {
-                    { 4, 1, 1, 3 },
-                    { 7, 1, 1, 4 },
-                    { 1, 1, 2, 5 },
-                    { 5, 1, 2, 3 },
-                    { 2, 1, 3, 1 },
-                    { 3, 1, 3, 1 },
-                    { 8, 1, 3, 4 },
-                    { 9, 1, 3, 2 },
-                    { 6, 1, 4, 3 },
-                    { 10, 1, 5, 2 }
+                    { 3, 1, 1, 1 },
+                    { 3, 2, 4, 3 },
+                    { 4, 1, 2, 2 },
+                    { 4, 3, 5, 7 },
+                    { 5, 2, 3, 4 }
                 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Friendships_ChatId",
                 table: "Friendships",
                 column: "ChatId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Friendships_FriendId",
-                table: "Friendships",
-                column: "FriendId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Messages_ChatId",
@@ -147,6 +151,11 @@ namespace DAL.EF.Migrations.ApplicationDb
             migrationBuilder.CreateIndex(
                 name: "IX_Messages_UserId",
                 table: "Messages",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Users_UserId",
+                table: "Users",
                 column: "UserId");
         }
 
