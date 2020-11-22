@@ -1,4 +1,5 @@
 ﻿using DAL.Domain;
+using DAL.EF.Contexts;
 using DAL.Interfaces.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -11,7 +12,7 @@ namespace DAL.EF.Repositories
 {
     public class UserRepository : GenericRepository<User>, IUserRepository
     {
-        public UserRepository(DbContext context) : base(context)
+        public UserRepository(ApplicationDbContext context) : base(context)
         {
         }
         public async Task<User> GetUserByIdAsync(string id)
@@ -46,23 +47,40 @@ namespace DAL.EF.Repositories
 
 
         }
-        public void UpdateUser(User user)
+        public void UpdateUser(User userToUpdate)
         {
-           var a = DbSet.FirstOrDefault(x => x.UserIdentityId == user.UserIdentityId);
+            var userOld = DbSet.FirstOrDefault(x => x.UserIdentityId == userToUpdate.UserIdentityId);
+            userToUpdate.Id = userOld.Id;
+            //var user1 = user.Clone();
+            //userToUpdate = (User)user1;
+            //context.Users.Update(userToUpdate);
+            // context.Set<User>().Update(userToUpdate);
+            context.Entry(userOld).CurrentValues.SetValues(userToUpdate);
+            context.SaveChanges();
             // context.Entry(a).Property(x => x.Id).IsModified = false;
             //context.Entry(a).State = EntityState.Modified;
             //context.Entry(a).CurrentValues.SetValues(user);//.Ignore(x => x.Id); 
-            if (a != null)
-            {
-                context.Entry<User>(user).State = EntityState.Detached;
-                context.Entry<User>(a).State = EntityState.Detached;
-                //context.SaveChanges();
-            }
-            
-            context.Attach(user);
-            context.Update(user);
-            context.Entry<User>(a).Property(x => x.Id).IsModified = false;
-            context.SaveChanges();
+            //if (a != null)
+            //{
+            //    context.Entry<User>(user).State = EntityState.Detached;
+            //    context.Entry<User>(a).State = EntityState.Detached;
+            //    context.SaveChanges();
+            //}
+
+            // context.Attach(user);
+            //context.SaveChanges();
+            //    var user = _applicationDbContext.Users.FirstOrDefault(u => u.Id == model.Id);
+
+            //    user.PhoneNumberConfirmed = model.PhoneNumberConfirmed;
+
+            //    var user = _applicationDbContext.Users.FirstOrDefault(u => u.Id == model.Id);
+
+            //    user.PhoneNumberConfirmed = model.PhoneNumberConfirmed;
+
+
+            //context.Entry<User>(a).Property(x => x.Id).IsModified = false;
+            //context.Entry<User>(user).Property(x => x.Id).IsModified = false;
+            //context.SaveChanges();
             
             ////TODO fixme
             //var entity = DbSetWithAllProperties().FirstOrDefault(u => u.UserName == user.UserName);

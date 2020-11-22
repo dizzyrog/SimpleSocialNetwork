@@ -35,8 +35,9 @@ export class EditProfileComponent implements OnInit {
     this.user$.subscribe(x=> {this.user = x;} );
   }
 
-  onSubmit(user:any) {
-    this.service.updateUser(user).subscribe(
+  onSubmit(userModel:User) {
+userModel.userName = this.user.userName;
+    this.service.updateUser(userModel).subscribe(
       (res: any) => {
           this.profileFormModel.reset();
           this.toastr.success('Information has been updated!');

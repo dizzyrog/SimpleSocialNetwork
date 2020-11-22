@@ -20,14 +20,12 @@ export class FriendSearchComponent implements OnInit {
 
   searchFormModel = this.fb.group({
     Name: [''],
-    age: [''],
-    email:[''],
-    password: [''],
-    phoneNumber: [''],
-    city:[''],
-    country:[''],
-    university:[''],
-    aboutMe:[''],
+    AgeMin: [''],
+    AgeMax: [''],
+    Email:[''],
+    City:[''],
+    Country:[''],
+    University:[''],
   });
 
   ngOnInit() {

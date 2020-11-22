@@ -60,11 +60,12 @@ namespace WebAPI.Controllers
 
                 var user = await _userManager.FindByNameAsync(model.UserName);
 
-                //TODO call login method, so user would not neded to login after registration
+                
                 var userDTO = _mapper.Map<UserModel, UserDTO>(model);
                 await _userService.AddUser(userDTO);
 
-                await Login (model);
+                await Login(model);
+
                 return Ok(result);
             }
             catch (Exception ex)

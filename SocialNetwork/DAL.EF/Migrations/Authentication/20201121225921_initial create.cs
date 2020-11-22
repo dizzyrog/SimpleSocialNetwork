@@ -155,12 +155,12 @@ namespace DAL.EF.Migrations.Authentication
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "1", "b1a6a48f-dd5c-4b5a-af27-265cfa8dea9d", "Admin", "ADMIN" });
+                values: new object[] { "1", "a135f729-d9df-42ad-97c1-444c65102aac", "Admin", "ADMIN" });
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "2", "4c9465f7-6316-4ec7-bb23-e2599d06cfa0", "User", "USER" });
+                values: new object[] { "2", "50f04f86-b847-43df-9285-ccca5b30b59f", "User", "USER" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",

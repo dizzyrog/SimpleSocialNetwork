@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DAL.Domain
 {
-    public class User : BaseEntity
+    public class User : BaseEntity, ICloneable
     {
         public string UserIdentityId { get; set; }
         public string FirstName { get; set; }
@@ -20,5 +20,9 @@ namespace DAL.Domain
         public ICollection<User> Friends { get; set; }
         public ICollection<Friendship> Friendships { get; set; }
         public ICollection<Message> Messages { get; set; }
+        public object Clone()
+        {
+            return this.MemberwiseClone();
+        }
     }
 }

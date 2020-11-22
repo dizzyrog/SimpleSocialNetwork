@@ -36,6 +36,7 @@ namespace WebAPI.Controllers
             {
                 return Ok(res);
             }
+            //todo Ok("No user Found")
             return BadRequest();
         }
        

@@ -66,8 +66,8 @@ namespace DAL.EF.Migrations
                     b.Property<int>("FriendId")
                         .HasColumnType("int");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("ChatId")
                         .HasColumnType("int");
@@ -95,7 +95,7 @@ namespace DAL.EF.Migrations
                     b.Property<string>("MessageText")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("UserId")
+                    b.Property<int?>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -148,11 +148,15 @@ namespace DAL.EF.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserName")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("UserId");
+
+                    b.HasIndex("UserName")
+                        .IsUnique()
+                        .HasFilter("[UserName] IS NOT NULL");
 
                     b.ToTable("Users");
                 });
@@ -182,9 +186,7 @@ namespace DAL.EF.Migrations
 
                     b.HasOne("DAL.Domain.User", "User")
                         .WithMany("Messages")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("DAL.Domain.User", b =>

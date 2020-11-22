@@ -53,7 +53,7 @@ namespace DAL.EF.Migrations
                 name: "Friendships",
                 columns: table => new
                 {
-                    UserId = table.Column<int>(nullable: false),
+                    UserId = table.Column<string>(nullable: false),
                     FriendId = table.Column<int>(nullable: false),
                     Id = table.Column<int>(nullable: false),
                     ChatId = table.Column<int>(nullable: false)
@@ -81,7 +81,7 @@ namespace DAL.EF.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    UserId = table.Column<int>(nullable: false),
+                    UserId = table.Column<int>(nullable: true),
                     ChatId = table.Column<int>(nullable: false),
                     MessageText = table.Column<string>(nullable: true)
                 },
@@ -99,7 +99,7 @@ namespace DAL.EF.Migrations
                         column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.InsertData(
@@ -133,6 +133,13 @@ namespace DAL.EF.Migrations
                 name: "IX_Users_UserId",
                 table: "Users",
                 column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Users_UserName",
+                table: "Users",
+                column: "UserName",
+                unique: true,
+                filter: "[UserName] IS NOT NULL");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

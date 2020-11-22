@@ -23,7 +23,7 @@ export class FriendsListComponent implements OnInit {
   }
 
   public editInfo(){
-    console.log(" going to edit profile page");
+    console.log("going to view profile page");
   }
 
   public chat(){

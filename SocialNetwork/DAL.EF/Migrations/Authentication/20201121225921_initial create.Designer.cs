@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DAL.EF.Migrations.Authentication
 {
     [DbContext(typeof(AuthenticationContext))]
-    [Migration("20201121101626_initial create")]
+    [Migration("20201121225921_initial create")]
     partial class initialcreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -116,14 +116,14 @@ namespace DAL.EF.Migrations.Authentication
                         new
                         {
                             Id = "1",
-                            ConcurrencyStamp = "b1a6a48f-dd5c-4b5a-af27-265cfa8dea9d",
+                            ConcurrencyStamp = "a135f729-d9df-42ad-97c1-444c65102aac",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = "2",
-                            ConcurrencyStamp = "4c9465f7-6316-4ec7-bb23-e2599d06cfa0",
+                            ConcurrencyStamp = "50f04f86-b847-43df-9285-ccca5b30b59f",
                             Name = "User",
                             NormalizedName = "USER"
                         });

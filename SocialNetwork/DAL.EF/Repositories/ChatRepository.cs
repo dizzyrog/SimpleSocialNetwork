@@ -1,4 +1,5 @@
 ﻿using DAL.Domain;
+using DAL.EF.Contexts;
 using DAL.Interfaces.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -10,7 +11,7 @@ namespace DAL.EF.Repositories
 {
     public class ChatRepository : GenericRepository<Chat>, IChatRepository
     {
-        public ChatRepository(DbContext context) : base(context)
+        public ChatRepository(ApplicationDbContext context) : base(context)
         {
         }
 

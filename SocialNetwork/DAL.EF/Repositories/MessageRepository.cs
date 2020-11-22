@@ -1,4 +1,5 @@
 ﻿using DAL.Domain;
+using DAL.EF.Contexts;
 using DAL.Interfaces.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -10,7 +11,7 @@ namespace DAL.EF.Repositories
 {
     public class MessageRepository : GenericRepository<Message>, IMessageRepository
     {
-        public MessageRepository(DbContext context) : base(context)
+        public MessageRepository(ApplicationDbContext context) : base(context)
         {
         }
 

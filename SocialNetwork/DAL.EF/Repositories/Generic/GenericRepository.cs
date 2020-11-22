@@ -1,4 +1,5 @@
 ﻿using DAL.Domain;
+using DAL.EF.Contexts;
 using DAL.Interfaces.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -12,9 +13,9 @@ namespace DAL.EF.Repositories
    public abstract class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
     {
         protected DbSet<T> DbSet { get; }
-        protected DbContext context;
+        protected ApplicationDbContext context;
         
-        protected GenericRepository(DbContext context)
+        protected GenericRepository(ApplicationDbContext context)
         {
             DbSet = context.Set<T>();
             this.context = context;

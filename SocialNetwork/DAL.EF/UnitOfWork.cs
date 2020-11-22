@@ -1,4 +1,5 @@
-﻿using DAL.EF.Repositories;
+﻿using DAL.EF.Contexts;
+using DAL.EF.Repositories;
 using DAL.Interfaces;
 using DAL.Interfaces.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -16,9 +17,9 @@ namespace DAL.EF
         public  IChatRepository Chat { get; }
         public IMessageRepository Message { get; }
 
-        private readonly DbContext _context;
+        private readonly ApplicationDbContext _context;
 
-        public UnitOfWork(DbContext context)
+        public UnitOfWork(ApplicationDbContext context)
         {
             _context = context;
             User = new UserRepository(_context);
