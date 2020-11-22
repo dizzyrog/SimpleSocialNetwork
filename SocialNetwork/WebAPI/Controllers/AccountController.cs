@@ -15,6 +15,7 @@ using DAL.Domain;
 using BLL.Interfaces;
 using AutoMapper;
 using BLL.DTO;
+using Microsoft.AspNetCore.Authorization;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -44,6 +45,7 @@ namespace WebAPI.Controllers
 
         
         [HttpPost]
+        [AllowAnonymous]
         [Route("Register")]
         //api/Account/register
         public async Task<ActionResult<UserModel>> PostUser(UserModel model)
@@ -75,6 +77,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         [Route("Login")]
         //api/account/login
         public async Task<IActionResult> Login(UserModel model)

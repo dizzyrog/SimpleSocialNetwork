@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { FriendsService } from 'src/app/friends.service';
+import { FriendsService } from 'src/app/friend/friends.service';
 import { User } from 'src/app/user/User';
 
 @Component({

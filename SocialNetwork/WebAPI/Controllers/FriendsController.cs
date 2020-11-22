@@ -25,9 +25,10 @@ namespace WebAPI.Controllers
             _mapper = mapper;
         }
 
-        // GET: api/friends
+        // GET: api/friends/friend
         [Route("friend")]
         [HttpPost]
+        [Authorize(Roles = "Admin, user")]
         public async Task<ActionResult<IEnumerable<UserDTO>>> SearchFriendsAsync([FromBody] SearchModel searchModel)
         {
             var searchDTO = _mapper.Map<SearchModel, SearchDTO>(searchModel);
@@ -42,15 +43,17 @@ namespace WebAPI.Controllers
        
         [Route("user")]
         [HttpGet]
-       // [Authorize(Roles = "Admin, User")]
+        [Authorize(Roles = "Admin, user")]
+        // [Authorize(Roles = "Admin, User")]
         public async  Task<ActionResult<IEnumerable<UserDTO>>> GetFriendsByUserIdAsync()
         {
             var userId = GetCurrentUserId();
             var friends = await _friendshipService.GetFriendsByUserIdAsync(userId);
             return Ok(friends);
         }
-        //[Route("~/")]
+        
         [HttpPost]
+        [Authorize(Roles = "Admin, user")]
         public async Task<ActionResult> AddFriendAsync([FromBody] UserModel friend)
         {
             try

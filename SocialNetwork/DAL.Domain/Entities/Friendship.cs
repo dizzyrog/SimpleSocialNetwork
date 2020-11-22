@@ -14,6 +14,5 @@ namespace DAL.Domain
         public User Friend { get; set; }
         public int ChatId { get; set; }
        // public Chat Chat { get; set; }
-        //TODO for how long have been friends
     }
 }

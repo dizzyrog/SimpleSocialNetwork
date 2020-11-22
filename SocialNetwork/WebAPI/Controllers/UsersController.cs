@@ -37,6 +37,7 @@ namespace WebAPI.Controllers
     }
         // GET: api/users
         [HttpGet]
+        [Authorize(Roles = "Admin, user")]
         public async Task<ActionResult<IEnumerable<UserDTO>>> GetUsersAsync()
         {
             var res = await _userService.GetUsersAsync();
@@ -50,12 +51,12 @@ namespace WebAPI.Controllers
 
         // GET api/<UsersController>/5
         [HttpGet("{id}")]
+        [Authorize(Roles = "Admin, user")]
         public async Task<ActionResult<UserDTO>> GetUserByIdAsync(int id)
         {
             var userId = GetCurrentUserId();
             var res = await _userService.GetUserByIdAsync(userId);
             
-            //TODO create a method for check
             if (res != null)
             {
                 return Ok(res);
@@ -67,6 +68,7 @@ namespace WebAPI.Controllers
 
         // PUT api/<UsersController>/5
         [HttpPatch]
+        [Authorize(Roles = "Admin, user")]
         public ActionResult UpdateUser([FromBody] UserModel userModel)
         {
             var user = _mapper.Map<UserModel, UserDTO>(userModel);
@@ -77,10 +79,9 @@ namespace WebAPI.Controllers
 
         // DELETE api/<UsersController>/5
         [HttpDelete("{id}")]
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> DeleteUserById(int id)
         {
-            //TODO delete by model not id mark as deleted
             var user = await _userService.GetByIdAsync(id);
             _userService.DeleteUser(user);
             return Ok();

@@ -1,5 +1,6 @@
 ﻿using DAL.Domain;
 using DAL.EF.Contexts;
+using DAL.EF.Exceptions;
 using DAL.Interfaces.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -30,7 +31,11 @@ namespace DAL.EF.Repositories
                 .AsNoTracking()
                 .FirstOrDefaultAsync(p => p.Id == id);
             //TODO create exceptions, check for null
-            
+
+            if (entity == null)
+            {
+                throw new DbRecordNotFoundException("No record found with id: ", id.ToString());
+            }
 
             return entity;
         }
@@ -40,7 +45,7 @@ namespace DAL.EF.Repositories
             var entities = await DbSetWithAllProperties()
                 .AsNoTracking()
                 .ToListAsync();
-            //TODO create exceptions, check for null
+            
 
             return entities;
         }
@@ -49,7 +54,10 @@ namespace DAL.EF.Repositories
 
         public async Task CreateAsync(T entity)
         {
-            //TODO create exceptions, check for null
+            if (entity == null)
+            {
+                throw new ArgumentNullException("entity","Error while checking for null in create entity method in repository");
+            }
 
             await DbSet.AddAsync(entity);
             context.SaveChanges();
@@ -58,22 +66,22 @@ namespace DAL.EF.Repositories
 
         public void Remove(T entity)
         {
-            //TODO create exceptions, check for null
-
+            
+            if (entity == null)
+            {
+                throw new ArgumentNullException("entity", "Error while checking for null in remove entity method in repository");
+            }
             DbSet.Remove(entity);
             context.SaveChanges();
         }
 
         public void Update(T entity)
         {
-
-            //TODO create exceptions, check for null
-            //context.Entry(entity).State = EntityState.Modified;
-            //TODO insert a into the next line
-            
-            var a =  DbSet.FirstOrDefault(x => x.Id == entity.Id);
-            context.Entry(a).CurrentValues.SetValues(entity);
-            //var a = DbSet.Update(entity);
+            if (entity == null)
+            {
+                throw new ArgumentNullException("entity", "Error while checking for null in update entity method in repository");
+            }
+            context.Entry(DbSet.FirstOrDefault(x => x.Id == entity.Id)).CurrentValues.SetValues(entity);
             context.SaveChanges();
         }
     }

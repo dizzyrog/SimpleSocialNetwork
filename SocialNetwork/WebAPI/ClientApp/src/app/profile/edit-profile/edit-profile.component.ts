@@ -42,19 +42,6 @@ userModel.userName = this.user.userName;
           this.profileFormModel.reset();
           this.toastr.success('Information has been updated!');
           this.router.navigateByUrl('');
-      //  else {
-      //     res.errors.forEach(element => {
-      //       switch (element.code) {
-      //         case 'DuplicateUserName':
-      //           this.toastr.error('Username is already taken','Registration failed.');
-      //           break;
-
-      //         default:
-      //         this.toastr.error(element.description,'Registration failed.');
-      //           break;
-      //       }
-      //     });
-      //   }
       },
       err => {
         console.log(err);

@@ -9,7 +9,6 @@ namespace BLL.Infrastructure.AutomapperProfiles
 {
     public class ChatAutomapperProfile : Profile
     {
-        //todo fix me to the  api model
         public ChatAutomapperProfile()
         {
             CreateMap<ChatDTO, Chat>();

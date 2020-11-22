@@ -7,8 +7,6 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { ProfileComponent } from './profile/profile.component';
-import { CounterComponent } from './counter/counter.component';
-import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { ChatListComponent } from './chat/chat-list/chat-list.component';
 import { FriendsListComponent } from './friend/friends-list/friends-list.component';
 import { FriendSearchComponent } from './friend/friend-search/friend-search.component';
@@ -29,8 +27,6 @@ import { AdminPanelComponent } from './admin-panel/admin-panel.component';
     AppComponent,
     NavMenuComponent,
     ProfileComponent,
-    CounterComponent,
-    FetchDataComponent,
     ChatListComponent,
     FriendsListComponent,
     FriendSearchComponent,
@@ -52,12 +48,10 @@ import { AdminPanelComponent } from './admin-panel/admin-panel.component';
     }),
     RouterModule.forRoot([
       { path: '', component: ProfileComponent, pathMatch: 'full', canActivate:[AuthGuard] },
-      {path: 'profile', component: EditProfileComponent},
-      { path: 'counter', component: CounterComponent },
-      { path: 'fetch-data', component: FetchDataComponent, canActivate:[AuthGuard],data :{permittedRoles:['Admin']} },
-      { path: 'chats', component:  ChatListComponent},
-      { path: 'friends', component: FriendsListComponent},
-      { path: 'search', component: FriendSearchComponent},
+      {path: 'profile', component: EditProfileComponent, canActivate:[AuthGuard]},
+      { path: 'chats', component:  ChatListComponent, canActivate:[AuthGuard]},
+      { path: 'friends', component: FriendsListComponent, canActivate:[AuthGuard]},
+      { path: 'search', component: FriendSearchComponent, canActivate:[AuthGuard]},
       { path: 'registration', component: RegistrationComponent },
       { path: 'login', component: LoginComponent},
       {path:'forbidden',component:ForbiddenComponent},

@@ -49,42 +49,9 @@ namespace WebAPI
             (options =>
         {
             options.UseSqlServer(Configuration.GetConnectionString("IdentityConnection"));
-            //options.UseOpenIddict();
         }
        ));
             services.Configure<ApplicationSettings>(Configuration.GetSection("ApplicationSettings"));
-
-            // Add OpenIddict services
-            //services.AddOpenIddict()
-            //    .AddCore(options =>
-            //    {
-            //        options.UseEntityFrameworkCore()
-            //            .UseDbContext<AuthenticationContext>()
-            //            .ReplaceDefaultEntities();
-            //    })
-            //    .AddServer(options =>
-            //    {
-            //        options.UseMvc();
-
-            //        options.EnableTokenEndpoint("/token");
-
-            //        options.AllowPasswordFlow();
-            //        options.AcceptAnonymousClients();
-            //    })
-            //    .AddValidation();
-
-            //// ASP.NET Core Identity should use the same claim names as OpenIddict
-            //services.Configure<IdentityOptions>(options =>
-            //{
-            //    options.ClaimsIdentity.UserNameClaimType = OpenIdConnectConstants.Claims.Name;
-            //    options.ClaimsIdentity.UserIdClaimType = OpenIdConnectConstants.Claims.Subject;
-            //    options.ClaimsIdentity.RoleClaimType = OpenIdConnectConstants.Claims.Role;
-            //});
-
-            //services.AddAuthentication(options =>
-            //{
-            //    options.DefaultScheme = OpenIddictValidationDefaults.AuthenticationScheme;
-            //});
 
             //needed fot Add-Migration to work
             services.AddIdentity<UserEntity, UserRoleEntity>()
@@ -204,18 +171,6 @@ namespace WebAPI
                 }
             });
         }
-        private static void AddIdentityCoreServices(IServiceCollection services)
-        {
-            var builder = services.AddIdentityCore<UserEntity>();
-            builder = new IdentityBuilder(
-                builder.UserType,
-                typeof(UserRoleEntity),
-                builder.Services);
-
-            builder.AddRoles<UserRoleEntity>()
-                .AddEntityFrameworkStores<AuthenticationContext>()
-                .AddDefaultTokenProviders()
-                .AddSignInManager<SignInManager<UserEntity>>();
-        }
+        
     }
 }

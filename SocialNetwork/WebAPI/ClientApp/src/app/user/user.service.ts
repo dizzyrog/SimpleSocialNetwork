@@ -2,7 +2,6 @@ import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User} from './User';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -39,19 +38,10 @@ export class UserService {
       return this.http.get<User[]>(this.baseUrl+'api/users');
     }
 
-    // addHero(hero: Hero): Observable<Hero> {
-    //   return this.http.post<Hero>(this.heroesUrl, hero, httpOptions)
-    //     .pipe(
-    //       catchError(this.handleError('addHero', hero))
-    //     );
-    // }
     updateUser(user: User) {
       user.id = 1;
       return this.http.patch<User>(this.baseUrl+'api/users', user);
-      //return this.http.put<User>(this.baseUrl+'api/users', user);
-        // .pipe(
-        //  catchError(er => {console.log(er)})
-        // );
+      
     }
     deleteUser(id){
       return this.http.delete<User>(this.baseUrl+'api/users/'+id);
@@ -97,8 +87,6 @@ export class UserService {
 
   comparePasswords(fb: FormGroup) {
     let confirmPswrdCtrl = fb.get('ConfirmPassword');
-    //passwordMismatch
-    //confirmPswrdCtrl.errors={passwordMismatch:true}
     if (confirmPswrdCtrl.errors == null || 'passwordMismatch' in confirmPswrdCtrl.errors) {
       if (fb.get('Password').value != confirmPswrdCtrl.value)
         confirmPswrdCtrl.setErrors({ passwordMismatch: true });

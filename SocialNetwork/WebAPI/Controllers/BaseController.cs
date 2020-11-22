@@ -16,7 +16,6 @@ namespace WebAPI.Controllers
         {
             ClaimsIdentity claimsIdentity = User.Identities.FirstOrDefault();
             IEnumerable<Claim> claims = claimsIdentity.Claims;
-            //TODO unauth user trying to get friends -> nullReferenceException
             var id = claims.FirstOrDefault(x => String.Equals(x.Type, "UserID")).Value;
             return id;
         }
