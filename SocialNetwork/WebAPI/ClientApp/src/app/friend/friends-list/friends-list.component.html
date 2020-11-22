@@ -2,22 +2,26 @@
   <table class='table table-striped' aria-labelledby="tableLabel" *ngIf="friends">
     <thead>
       <tr>
+        <th>Name</th>
+        <th>Surname</th>
         <th>Username</th>
         <th>Email</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let friend of friends">
+        <td>{{friend.firstName}}</td>
+        <td>{{friend.lastName}}</td>
         <td>{{friend.userName}}</td>
         <td>{{friend.email}}</td>
         <td><div>
-          <a [routerLink]="['/profile/{id}']">
-              <button class="btn btn-primary" (click)="editInfo()">FIXME View profile</button>
+          <a [routerLink]="['/friend/profile']">
+              <button class="btn btn-primary" (click)="setId(friend.id)"> View profile</button>
           </a>
       </div>
       <div>
-        <a [routerLink]="['/chat/{id}']">
-            <button class="btn btn-primary" (click)="chat()">FIXME Chat</button>
+        <a [routerLink]="['/chat']">
+            <button class="btn btn-primary" (click)="setDataForChat(friend.id)"> Chat</button>
         </a>
       </div></td>
       </tr>

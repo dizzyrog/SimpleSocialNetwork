@@ -3,45 +3,30 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
+using WebAPI.Models;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace WebAPI.Controllers
 {
-    [Route("api/[controller]")]
+    //[Route("api/[controller]")]
     [ApiController]
     public class ChatsController : ControllerBase
     {
-        // GET: api/<ChatsController>
-        [HttpGet]
-        public IEnumerable<string> Get()
+        private readonly IHubContext<ChatHub> _hubContext;
+
+        public ChatsController(IHubContext<ChatHub> hubContext)
         {
-            return new string[] { "value1", "value2" };
+            _hubContext = hubContext;
         }
 
-        // GET api/<ChatsController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // POST api/<ChatsController>
+        [Route("api/chat/send")]                                           //path looks like this: https://localhost:44379/api/chat/send
         [HttpPost]
-        public void Post([FromBody] string value)
+        public IActionResult SendRequest([FromBody] MessageModel msg)
         {
-        }
-
-        // PUT api/<ChatsController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<ChatsController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            _hubContext.Clients.All.SendAsync("ReceiveOne", msg.user1,msg.user2, msg.msgText);
+            return Ok();
         }
     }
 }

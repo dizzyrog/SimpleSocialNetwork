@@ -28,8 +28,9 @@ export class UserService {
     }, { validator: this.comparePasswords })
   });
 
-  
-  
+  getCurrentUserByIdObservable (){
+    return this.http.get<User>(this.baseUrl+'api/users/current');
+  }
     getUserByIdObservable (id: number){
       return this.http.get<User>(this.baseUrl+'api/users/'+id);
     }

@@ -62,6 +62,7 @@ namespace WebAPI
 
             services.AddControllersWithViews();
             // In production, the Angular files will be served from this directory
+            services.AddSignalR(); 
             services.AddSpaStaticFiles(configuration =>
             {
                 configuration.RootPath = "ClientApp/dist";
@@ -77,7 +78,13 @@ namespace WebAPI
             }
             );
 
-            services.AddCors();
+            services.AddCors(options => options.AddPolicy("CorsPolicy",
+               builder =>
+               {
+                   builder.AllowAnyMethod().AllowAnyHeader()
+                   .WithOrigins("https://localhost:44316")
+                   .AllowCredentials();
+               }));
             services.AddControllers().AddNewtonsoftJson() ;
 
 
@@ -156,6 +163,7 @@ namespace WebAPI
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller}/{action=Index}/{id?}");
+                endpoints.MapHub<ChatHub>("/chatsocket");     // path will look like this https://localhost:44379/chatsocket
             });
 
             app.UseSpa(spa =>

@@ -12,20 +12,23 @@ import { User } from 'src/app/user/User';
 export class FriendsListComponent implements OnInit {
   friends$:Observable<User[]>
   friends: User[];
-
-  constructor(private router: Router, private service: FriendsService) { }
+  user$:Observable<User>
+  user: User;
+  constructor(private router: Router, private friendService: FriendsService) { }
 
   ngOnInit() {
 
-    this.friends$ = this.service.getFriendsByUserIdObservable();
+    this.friends$ = this.friendService.getFriendsByUserIdObservable();
     this.friends$.subscribe(x=> {this.friends = x;} );
 
   }
 
-  public editInfo(){
-    console.log("going to view profile page");
+  public setId(value){
+    sessionStorage.setItem('id', value);
   }
-
+setDataForChat(friendId){
+  sessionStorage.setItem('friendId', friendId);
+}
   public chat(){
     console.log(" going to chat page");
   }

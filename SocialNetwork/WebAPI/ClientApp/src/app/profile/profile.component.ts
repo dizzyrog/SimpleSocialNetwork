@@ -17,15 +17,8 @@ export class ProfileComponent implements OnInit {
   constructor(private router: Router, private service: UserService) { }
 
   ngOnInit() {
-
-    this.user$ = this.service.getUserByIdObservable(2);
+    this.user$ = this.service.getCurrentUserByIdObservable();
     this.user$.subscribe(x=> {this.user = x;} );
-   
-
   }
    
-  onLogout() {
-    localStorage.removeItem('token');
-    this.router.navigate(['/user/login']);
-  }
 }

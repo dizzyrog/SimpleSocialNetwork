@@ -37,7 +37,7 @@ namespace WebAPI.Controllers
     }
         // GET: api/users
         [HttpGet]
-        [Authorize(Roles = "Admin, user")]
+        [Authorize]
         public async Task<ActionResult<IEnumerable<UserDTO>>> GetUsersAsync()
         {
             var res = await _userService.GetUsersAsync();
@@ -50,9 +50,10 @@ namespace WebAPI.Controllers
     
 
         // GET api/<UsersController>/5
-        [HttpGet("{id}")]
-        [Authorize(Roles = "Admin, user")]
-        public async Task<ActionResult<UserDTO>> GetUserByIdAsync(int id)
+        [HttpGet]
+        [Authorize]
+        [Route("current")]
+        public async Task<ActionResult<UserDTO>> GetCurrentUserByIdAsync()
         {
             var userId = GetCurrentUserId();
             var res = await _userService.GetUserByIdAsync(userId);
@@ -65,10 +66,23 @@ namespace WebAPI.Controllers
 
         }
 
+        [HttpGet("{id}")]
+        [Authorize]
+        public async Task<ActionResult<UserDTO>> GetUserByIdAsync(int id)
+        {
+            var res = await _userService.GetByIdAsync(id);
+
+            if (res != null)
+            {
+                return Ok(res);
+            }
+            return BadRequest();
+
+        }
 
         // PUT api/<UsersController>/5
         [HttpPatch]
-        [Authorize(Roles = "Admin, user")]
+        [Authorize]
         public ActionResult UpdateUser([FromBody] UserModel userModel)
         {
             var user = _mapper.Map<UserModel, UserDTO>(userModel);

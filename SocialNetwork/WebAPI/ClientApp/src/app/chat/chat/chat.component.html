@@ -1,1 +1,18 @@
-<p>chat works!</p>
+<div class="ud-body">
+     <div class="msg-box">
+      <ul>
+        <li *ngFor="let mObj of msgInboxArray"  [ngClass]="mObj.user1 === msgDto.user1 ? 'in-msg' : 'ex-msg'" >
+            {{mObj.user1}} :<br />
+            <span class="msg-italic-style">{{mObj.msgText}}</span></li>
+      </ul>
+     </div>
+     <div class="ud-flex-row">
+      <input type="text" placeholder="Type message here" class="msg-input" [(ngModel)]="msgDto.msgText" />
+     </div>
+     <br>
+     <button (click)= "send()" class="btn btn-primary"> Send </button>
+   </div>
+
+
+   
+   

@@ -21,6 +21,8 @@ import { AuthGuard } from './user/auth/auth.guard';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
+import { ChatComponent } from './chat/chat/chat.component';
+import { FriendProfileComponent } from './friend/friend-profile/friend-profile.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import { AdminPanelComponent } from './admin-panel/admin-panel.component';
     LoginComponent,
     HomeComponent,
     ForbiddenComponent,
-    AdminPanelComponent
+    AdminPanelComponent,
+    ChatComponent,
+    FriendProfileComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -52,9 +56,11 @@ import { AdminPanelComponent } from './admin-panel/admin-panel.component';
       { path: 'chats', component:  ChatListComponent, canActivate:[AuthGuard]},
       { path: 'friends', component: FriendsListComponent, canActivate:[AuthGuard]},
       { path: 'search', component: FriendSearchComponent, canActivate:[AuthGuard]},
+      { path: 'friend/profile', component: FriendProfileComponent, canActivate:[AuthGuard]},
       { path: 'registration', component: RegistrationComponent },
       { path: 'login', component: LoginComponent},
       {path:'forbidden',component:ForbiddenComponent},
+      {path:'chat',component:ChatComponent},
       {path:'admin',component:AdminPanelComponent, canActivate:[AuthGuard],data :{permittedRoles:['Admin']}}
     ])
   ],

@@ -28,7 +28,7 @@ namespace WebAPI.Controllers
         // GET: api/friends/friend
         [Route("friend")]
         [HttpPost]
-        [Authorize(Roles = "Admin, user")]
+        [Authorize]
         public async Task<ActionResult<IEnumerable<UserDTO>>> SearchFriendsAsync([FromBody] SearchModel searchModel)
         {
             var searchDTO = _mapper.Map<SearchModel, SearchDTO>(searchModel);
@@ -43,7 +43,7 @@ namespace WebAPI.Controllers
        
         [Route("user")]
         [HttpGet]
-        [Authorize(Roles = "Admin, user")]
+        [Authorize]
         // [Authorize(Roles = "Admin, User")]
         public async  Task<ActionResult<IEnumerable<UserDTO>>> GetFriendsByUserIdAsync()
         {
@@ -53,7 +53,7 @@ namespace WebAPI.Controllers
         }
         
         [HttpPost]
-        [Authorize(Roles = "Admin, user")]
+        [Authorize]
         public async Task<ActionResult> AddFriendAsync([FromBody] UserModel friend)
         {
             try
