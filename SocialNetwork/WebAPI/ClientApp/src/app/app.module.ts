@@ -7,7 +7,6 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { ProfileComponent } from './profile/profile.component';
-import { ChatListComponent } from './chat/chat-list/chat-list.component';
 import { FriendsListComponent } from './friend/friends-list/friends-list.component';
 import { FriendSearchComponent } from './friend/friend-search/friend-search.component';
 import { EditProfileComponent } from './profile/edit-profile/edit-profile.component';
@@ -29,7 +28,6 @@ import { FriendProfileComponent } from './friend/friend-profile/friend-profile.c
     AppComponent,
     NavMenuComponent,
     ProfileComponent,
-    ChatListComponent,
     FriendsListComponent,
     FriendSearchComponent,
     EditProfileComponent,
@@ -53,14 +51,13 @@ import { FriendProfileComponent } from './friend/friend-profile/friend-profile.c
     RouterModule.forRoot([
       { path: '', component: ProfileComponent, pathMatch: 'full', canActivate:[AuthGuard] },
       {path: 'profile', component: EditProfileComponent, canActivate:[AuthGuard]},
-      { path: 'chats', component:  ChatListComponent, canActivate:[AuthGuard]},
       { path: 'friends', component: FriendsListComponent, canActivate:[AuthGuard]},
       { path: 'search', component: FriendSearchComponent, canActivate:[AuthGuard]},
       { path: 'friend/profile', component: FriendProfileComponent, canActivate:[AuthGuard]},
-      { path: 'registration', component: RegistrationComponent },
+      { path: 'registration', component: RegistrationComponent},
       { path: 'login', component: LoginComponent},
       {path:'forbidden',component:ForbiddenComponent},
-      {path:'chat',component:ChatComponent},
+      {path:'chat',component:ChatComponent, canActivate:[AuthGuard]},
       {path:'admin',component:AdminPanelComponent, canActivate:[AuthGuard],data :{permittedRoles:['Admin']}}
     ])
   ],

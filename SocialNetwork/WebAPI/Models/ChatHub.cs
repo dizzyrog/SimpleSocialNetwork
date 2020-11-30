@@ -8,9 +8,9 @@ namespace WebAPI.Models
 {
     public class ChatHub : Hub
     {
-        public Task SendMessage1(string user, string message)               // Two parameters accepted
+        public Task SendMessage1(string user1, string user2, string message)               // Two parameters accepted
         {
-            return Clients.All.SendAsync("ReceiveOne", user, message);    // Note this 'ReceiveOne' 
+            return Clients.All.SendAsync("ReceiveOne", user1, user2, message);    // Note this 'ReceiveOne' 
         }
     }
 }

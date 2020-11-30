@@ -19,7 +19,7 @@ export class NavMenuComponent implements OnInit {
 checkIsAdmin():boolean{
   var payLoad = JSON.parse(window.atob(localStorage.getItem('token').split('.')[1]));
       var userRole = payLoad.role;
-        if (userRole == 'Admin') {
+        if (userRole == 'admin') {
           return true;
         }
 }

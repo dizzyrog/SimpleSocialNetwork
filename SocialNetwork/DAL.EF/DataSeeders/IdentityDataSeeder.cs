@@ -14,6 +14,18 @@ namespace DAL.EF.DataSeeder
 
         public static void SeedDatabase(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<UserRoleEntity>().HasData(
+                new UserRoleEntity()
+                { 
+                    Name = "user",
+                    NormalizedName = "USER"
+                },
+                new UserRoleEntity()
+                {
+                    Name = "admin",
+                    NormalizedName ="ADMIN"
+                }
+                );
         }
 
      }

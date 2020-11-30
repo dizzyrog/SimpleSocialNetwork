@@ -8,7 +8,8 @@ namespace DAL.Interfaces.Repositories
 {
     public interface IUserRepository : IGenericRepository<User>
     {
-        Task<User> GetUserByIdAsync(string id);
+        public Task<User> GetUserByIdAsync(string id);
+        public Task<User> GetUserByUsernameAsync(string username);
         public void UpdateIdentityId(User user);
         public void UpdateUser(User user);
     }

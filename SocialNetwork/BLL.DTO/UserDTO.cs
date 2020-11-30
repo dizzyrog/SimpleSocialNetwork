@@ -19,6 +19,5 @@ namespace BLL.DTO
         public int Age { get; set; }
         // public ICollection<User> Friends { get; set; }
         public ICollection<FriendshipDTO> Friendships { get; set; }
-        public ICollection<MessageDTO> Messages { get; set; }
     }
 }

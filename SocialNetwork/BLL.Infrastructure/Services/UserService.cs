@@ -27,6 +27,12 @@ namespace BLL.Infrastructure.Services
             var resultDTO = Mapper.Map<User, UserDTO>(result);
             return resultDTO;
         }
+        public async Task<UserDTO> GetUserByUsernameAsync(string username)
+        {
+            var result = await UnitOfWork.User.GetUserByUsernameAsync(username);
+            var resultDTO = Mapper.Map<User, UserDTO>(result);
+            return resultDTO;
+        }
         public async Task<IEnumerable<UserDTO>> GetUsersAsync()
         {
             var result = await UnitOfWork.User.GetAllAsync();

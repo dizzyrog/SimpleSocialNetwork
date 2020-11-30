@@ -19,7 +19,6 @@ namespace DAL.Domain
         public int Age { get; set; }
         public ICollection<User> Friends { get; set; }
         public ICollection<Friendship> Friendships { get; set; }
-        public ICollection<Message> Messages { get; set; }
         
     }
 }

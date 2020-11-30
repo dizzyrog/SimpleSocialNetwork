@@ -26,14 +26,10 @@ namespace WebAPI.Controllers
 
         private readonly IUserService _userService;
         private readonly IMapper _mapper;
-        private readonly UserManager<UserEntity> _userManager;
-        private readonly IHttpContextAccessor _httpContextAccessor;
-        public UsersController(IUserService userService, IMapper mapper, UserManager<UserEntity> userManager, IHttpContextAccessor httpContextAccessor)
+        public UsersController(IUserService userService, IMapper mapper)
         {
             _userService = userService;
             _mapper = mapper;
-            _userManager = userManager;
-            _httpContextAccessor = httpContextAccessor;
     }
         // GET: api/users
         [HttpGet]
@@ -93,7 +89,7 @@ namespace WebAPI.Controllers
 
         // DELETE api/<UsersController>/5
         [HttpDelete("{id}")]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "admin")]
         public async Task<ActionResult> DeleteUserById(int id)
         {
             var user = await _userService.GetByIdAsync(id);

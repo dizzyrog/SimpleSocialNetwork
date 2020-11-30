@@ -29,20 +29,22 @@ export class ChatComponent implements OnInit {
   send(): void {
         
         this.msgDto.user1 = this.user.userName;
-        this.msgDto.user2 =   sessionStorage.getItem('friendId');
+        this.msgDto.user2 =   sessionStorage.getItem('friendUsername');
         this.chatService.broadcastMessage(this.msgDto); 
-        this.msgDto.msgText = '';                  // Send the message via a service
+        this.msgDto.messageText = '';                  // Send the message via a service
 
         
       }
-    
+
+      delete() : void {
+        this.chatService.deleteMessage().subscribe();
+          }
 
   addToInbox(obj: Message) {
     let newObj = new Message();
     newObj.user1 = obj.user1;
     newObj.user2 = obj.user2;
-    newObj.msgText = obj.msgText;
+    newObj.messageText = obj.messageText;
     this.msgInboxArray.push(newObj);
-
   }
 }

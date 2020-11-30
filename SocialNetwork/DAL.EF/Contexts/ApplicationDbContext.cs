@@ -21,7 +21,6 @@ namespace DAL.EF.Contexts
         }
 
         public DbSet<User> Users { get; set; }
-        public DbSet<Chat> Chats { get; set; }
         public DbSet<Message> Messages { get; set; }
         public DbSet<Friendship> Friendships { get; set; }
 
@@ -32,11 +31,9 @@ namespace DAL.EF.Contexts
 
             modelBuilder.ApplyConfiguration(new UserConfiguration());
             modelBuilder.ApplyConfiguration(new FriendshipConfiguration());
-            modelBuilder.ApplyConfiguration(new ChatConfiguration());
             modelBuilder.ApplyConfiguration(new MessageConfiguration());
 
             UserSeeder.SeedDatabase(modelBuilder);
-            ChatSeeder.SeedDatabase(modelBuilder);
             FriendshipSeeder.SeedDatabase(modelBuilder);
             //MessageSeeder.SeedDatabase(modelBuilder);
 

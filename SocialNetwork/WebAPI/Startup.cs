@@ -91,7 +91,6 @@ namespace WebAPI
             var mappingConfig = new MapperConfiguration(mc =>
             {
                 mc.AddProfile(new UserAutomapperProfile());
-                mc.AddProfile(new ChatAutomapperProfile());
                 mc.AddProfile(new FriendshipAutomapperProfile());
                 mc.AddProfile(new MessageAutomapperProfile());
                 mc.AddProfile(new SearchAutomapperProfile());
@@ -106,6 +105,7 @@ namespace WebAPI
             services.AddTransient<IFriendshipService, FriendshipService>();
             services.AddTransient<IUnitOfWork, UnitOfWork>();
             services.AddScoped<DbContext, ApplicationDbContext>();
+            services.AddTransient<IMessageService, MessageService>();
 
             services.AddHttpContextAccessor();
 

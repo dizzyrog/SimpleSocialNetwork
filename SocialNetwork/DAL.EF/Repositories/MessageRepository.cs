@@ -14,7 +14,6 @@ namespace DAL.EF.Repositories
         public MessageRepository(ApplicationDbContext context) : base(context)
         {
         }
-
         protected override IQueryable<Message> DbSetWithAllProperties()
         {
             return DbSet;

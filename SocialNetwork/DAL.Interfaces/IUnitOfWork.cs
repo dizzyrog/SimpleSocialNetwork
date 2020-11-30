@@ -8,7 +8,6 @@ namespace DAL.Interfaces
     {
         IUserRepository User { get; }
         IFriendshipRepository Friendship { get; }
-        IChatRepository Chat { get; }
         IMessageRepository Message { get; } 
         Task SaveChangesAsync();
     }

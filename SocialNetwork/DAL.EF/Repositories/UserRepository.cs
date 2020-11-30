@@ -25,6 +25,15 @@ namespace DAL.EF.Repositories
 
             return entity;
         }
+        public async Task<User> GetUserByUsernameAsync(string username)
+        {
+            var entity =  await DbSetWithAllProperties()
+                .AsNoTracking()
+                .FirstOrDefaultAsync(p => p.UserName == username);
+            //TODO create exceptions, check for null
+
+            return entity;
+        }
 
         public void UpdateIdentityId(User user)
         {

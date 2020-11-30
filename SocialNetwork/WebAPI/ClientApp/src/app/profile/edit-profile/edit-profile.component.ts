@@ -31,12 +31,12 @@ export class EditProfileComponent implements OnInit {
 });
   ngOnInit() {
     
-    this.user$ = this.service.getUserByIdObservable(2);
+    this.user$ = this.service.getCurrentUserByIdObservable();
     this.user$.subscribe(x=> {this.user = x;} );
   }
 
   onSubmit(userModel:User) {
-userModel.userName = this.user.userName;
+    userModel.userName = this.user.userName;
     this.service.updateUser(userModel).subscribe(
       (res: any) => {
           this.profileFormModel.reset();

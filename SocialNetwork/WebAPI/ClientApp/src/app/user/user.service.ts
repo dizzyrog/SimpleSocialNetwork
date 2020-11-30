@@ -40,7 +40,7 @@ export class UserService {
     }
 
     updateUser(user: User) {
-      user.id = 1;
+      //user.id = 1;
       return this.http.patch<User>(this.baseUrl+'api/users', user);
       
     }
@@ -64,7 +64,7 @@ export class UserService {
         PhoneNumber: this.formModel.value.PhoneNumber,
         Email: this.formModel.value.Email,
         Password: this.formModel.value.Passwords.Password,
-        Role: "user"
+        Role:"admin"
       };
       return this.http.post(this.baseUrl + 'api/account/register', body);
     }

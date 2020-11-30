@@ -96,8 +96,7 @@ namespace BLL.Infrastructure.Services
             var friendship = new Friendship()
             {
                 UserId = userId,
-                FriendId = friend.Id,
-                ChatId = 2,
+                FriendId = friend.Id
             };
             await UnitOfWork.Friendship.CreateAsync(friendship);
         }

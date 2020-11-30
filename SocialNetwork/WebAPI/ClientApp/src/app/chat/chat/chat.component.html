@@ -1,13 +1,15 @@
 <div class="ud-body">
      <div class="msg-box">
       <ul>
-        <li *ngFor="let mObj of msgInboxArray"  [ngClass]="mObj.user1 === msgDto.user1 ? 'in-msg' : 'ex-msg'" >
-            {{mObj.user1}} :<br />
-            <span class="msg-italic-style">{{mObj.msgText}}</span></li>
+        <li *ngFor="let mObj of msgInboxArray"  
+         [ngClass]="(((mObj.user1 === msgDto.user1) || (mObj.user1 === msgDto.user2)) && ((mObj.user2 === msgDto.user1) || (mObj.user2 === msgDto.user2))) ? 'in-msg':'teststyle' " >
+         <button (click)= "delete()" class="btn btn-primary"> X </button> {{mObj.user1}} :<br />
+            <span class="msg-italic-style">{{mObj.messageText}}</span>
+        </li>
       </ul>
      </div>
      <div class="ud-flex-row">
-      <input type="text" placeholder="Type message here" class="msg-input" [(ngModel)]="msgDto.msgText" />
+      <input type="text" placeholder="Type message here" class="msg-input" [(ngModel)]="msgDto.messageText" />
      </div>
      <br>
      <button (click)= "send()" class="btn btn-primary"> Send </button>

@@ -26,8 +26,8 @@ export class FriendsListComponent implements OnInit {
   public setId(value){
     sessionStorage.setItem('id', value);
   }
-setDataForChat(friendId){
-  sessionStorage.setItem('friendId', friendId);
+setDataForChat(friendUsername){
+  sessionStorage.setItem('friendUsername', friendUsername);
 }
   public chat(){
     console.log(" going to chat page");

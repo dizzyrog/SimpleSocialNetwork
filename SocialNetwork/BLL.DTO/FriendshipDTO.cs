@@ -11,7 +11,5 @@ namespace BLL.DTO
         public UserDTO User { get; set; }
         public int FriendId { get; set; }
         public UserDTO Friend { get; set; }
-        public int ChatId { get; set; }
-        public ChatDTO Chat { get; set; }
     }
 }

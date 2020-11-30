@@ -14,7 +14,6 @@ namespace DAL.EF
     {
         public IUserRepository User { get; }
         public IFriendshipRepository Friendship { get; }
-        public  IChatRepository Chat { get; }
         public IMessageRepository Message { get; }
 
         private readonly ApplicationDbContext _context;
@@ -24,7 +23,6 @@ namespace DAL.EF
             _context = context;
             User = new UserRepository(_context);
             Friendship = new FriendshipRepository(_context);
-            Chat = new ChatRepository(_context);
             Message = new MessageRepository(_context);
         }
 
